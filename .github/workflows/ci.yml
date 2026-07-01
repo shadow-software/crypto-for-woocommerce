@@ -85,3 +85,31 @@ jobs:
           find . -type f -name '*.php' -not -path './vendor/*' -print0 \
             | xargs -0 -n1 -P4 php -l > /dev/null
           echo "All PHP files parse on PHP 8.0."
+
+  # The official WordPress.org Plugin Check — the exact automated gate the
+  # directory runs. Built into the release layout first (via `git archive`, so
+  # dev/repo files are stripped and it is nested under the slug folder), then
+  # checked at the strictest settings: include experimental checks and both
+  # low-severity errors and warnings, so ANY finding at ANY level fails CI.
+  plugin-check:
+    name: WordPress.org Plugin Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build the release layout (export-ignore applied, nested under slug)
+        run: |
+          git archive --format=tar --prefix=accept-crypto-for-woocommerce/ HEAD \
+            | tar -x -C "${{ runner.temp }}"
+          echo "PLUGIN_DIR=${{ runner.temp }}/accept-crypto-for-woocommerce" >> "$GITHUB_ENV"
+
+      - name: Run Plugin Check
+        uses: wordpress/plugin-check-action@v1
+        with:
+          build-dir: ${{ env.PLUGIN_DIR }}
+          slug: accept-crypto-for-woocommerce
+          severity: 0
+          include-experimental: true
+          include-low-severity-errors: true
+          include-low-severity-warnings: true
