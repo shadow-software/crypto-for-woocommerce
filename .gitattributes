@@ -6,6 +6,7 @@
 /.editorconfig      export-ignore
 /.gitattributes     export-ignore
 /.gitignore         export-ignore
+/.distignore        export-ignore
 /CONTRIBUTING.md    export-ignore
 /SECURITY.md        export-ignore
 /README.md          export-ignore
