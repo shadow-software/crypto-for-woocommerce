@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Accept Crypto for WooCommerce
- * Plugin URI:        https://shadowsoftware.com/
+ * Plugin URI:        https://github.com/shadow-software/crypto-woocommerce
  * Description:       A simple, free, open-source plugin to confirm common blockchain transactions (USDT/USDC/BTC/ETH) and mark orders paid in Woocommerce. Enter your own receiving addresses; customers pay them directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No middleman, no fees, no keys on your server.
  * Version:           1.0.0
  * Requires at least: 6.4
