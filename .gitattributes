@@ -1,6 +1,7 @@
 # Files excluded from `git archive` exports (release ZIPs) — dev-only tooling,
 # tests, CI, and repo meta that should not ship inside the installable plugin.
 /.github            export-ignore
+/.wordpress-org     export-ignore
 /tests              export-ignore
 /.editorconfig      export-ignore
 /.gitattributes     export-ignore
