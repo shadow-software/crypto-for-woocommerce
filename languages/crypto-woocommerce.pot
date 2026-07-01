@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-01T09:22:48+00:00\n"
+"POT-Creation-Date: 2026-07-01T10:04:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: crypto-woocommerce\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #. Description of the plugin
 #: crypto-woocommerce.php
-msgid "Accept self-custodial crypto payments in WooCommerce — ETH, USDC and USDT on Ethereum, Base, Arbitrum and OP Mainnet, plus native Bitcoin. Enter your own receiving addresses; customers pay them directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No middleman, no fees, no keys on your server."
+msgid "A simple, free, open-source plugin to confirm common blockchain transactions (USDT/USDC/BTC/ETH) and mark orders paid in Woocommerce. Enter your own receiving addresses; customers pay them directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No middleman, no fees, no keys on your server."
 msgstr ""
 
 #. Author of the plugin
@@ -56,8 +56,8 @@ msgid "Tether (USDT)"
 msgstr ""
 
 #: includes/Blocks/BlocksSupport.php:95
-#: includes/Gateway.php:62
-#: includes/Gateway.php:91
+#: includes/Gateway.php:52
+#: includes/Gateway.php:81
 msgid "Pay with crypto (ETH, USDC, USDT, BTC)"
 msgstr ""
 
@@ -131,267 +131,264 @@ msgstr ""
 msgid "Payment found — waiting for network confirmations (%1$d of %2$d)."
 msgstr ""
 
-#: includes/Gateway.php:53
+#: includes/Gateway.php:43
 msgid "Crypto (self-custodial)"
 msgstr ""
 
-#: includes/Gateway.php:54
-msgid "Accept crypto straight to your own wallets — ETH, USDC and USDT on Ethereum, Base, Arbitrum and OP Mainnet, plus native Bitcoin. The order total is converted at the live rate; the buyer pays your address directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No custody, no fees, no keys on your server."
+#: includes/Gateway.php:44
+msgid "Confirm common blockchain transactions (USDT, USDC, BTC and ETH) and mark orders paid — straight to your own wallets. The order total is converted at the live rate; the buyer pays your address directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No custody, no fees, no keys on your server."
 msgstr ""
 
-#: includes/Gateway.php:63
-#: includes/Gateway.php:98
+#: includes/Gateway.php:53
+#: includes/Gateway.php:88
 msgid "Pay in crypto from your own wallet. After you place the order we show the exact amount and address to pay."
 msgstr ""
 
-#: includes/Gateway.php:82
+#: includes/Gateway.php:72
 msgid "Enable/Disable"
 msgstr ""
 
-#: includes/Gateway.php:84
+#: includes/Gateway.php:74
 msgid "Enable crypto payments"
 msgstr ""
 
-#: includes/Gateway.php:88
+#: includes/Gateway.php:78
 msgid "Title"
 msgstr ""
 
-#: includes/Gateway.php:90
+#: includes/Gateway.php:80
 msgid "Payment method title shown to the customer at checkout."
 msgstr ""
 
-#: includes/Gateway.php:95
+#: includes/Gateway.php:85
 msgid "Description"
 msgstr ""
 
-#: includes/Gateway.php:97
+#: includes/Gateway.php:87
 msgid "Payment method description shown to the customer at checkout."
 msgstr ""
 
-#: includes/Gateway.php:101
+#: includes/Gateway.php:91
 msgid "Ethereum & tokens — receiving wallet"
 msgstr ""
 
-#: includes/Gateway.php:103
+#: includes/Gateway.php:93
 msgid "The 0x… address every EVM customer pays (ETH, USDC and USDT all arrive at this one address on whichever network the buyer chooses). Use an address you control. Double-check it — funds are sent by customers directly and cannot be recovered by this plugin."
 msgstr ""
 
-#: includes/Gateway.php:106
+#: includes/Gateway.php:96
 msgid "EVM receiving address (0x…)"
 msgstr ""
 
-#: includes/Gateway.php:108
+#: includes/Gateway.php:98
 msgid "Your 0x… address. If you paste a checksummed (mixed-case) address it is verified; a typo will be rejected on save. Leave blank to disable ETH/USDC/USDT."
 msgstr ""
 
-#: includes/Gateway.php:119
+#: includes/Gateway.php:109
 msgid "Networks & assets"
 msgstr ""
 
-#: includes/Gateway.php:121
+#: includes/Gateway.php:111
 msgid "Choose which networks customers may pay on, and which assets (ETH / USDC / USDT) to accept on each. All use free public nodes by default; you can point any network at your own RPC endpoint below."
 msgstr ""
 
 #. translators: %s: network name.
-#: includes/Gateway.php:131
+#: includes/Gateway.php:121
 #, php-format
 msgid "Accept payments on %s"
 msgstr ""
 
 #. translators: %s: network name.
-#: includes/Gateway.php:139
+#: includes/Gateway.php:129
 #, php-format
 msgid "%s — assets"
 msgstr ""
 
-#: includes/Gateway.php:141
+#: includes/Gateway.php:131
 msgid "ETH (native)"
 msgstr ""
 
 #. translators: %s: token symbol.
-#: includes/Gateway.php:152
+#: includes/Gateway.php:142
 #, php-format
 msgid "%s (token)"
 msgstr ""
 
 #. translators: %s: network name.
-#: includes/Gateway.php:159
+#: includes/Gateway.php:149
 #, php-format
 msgid "%s — confirmations"
 msgstr ""
 
-#: includes/Gateway.php:161
+#: includes/Gateway.php:151
 msgid "Block confirmations required before the order is completed. Higher is safer but slower."
 msgstr ""
 
 #. translators: %s: network name.
-#: includes/Gateway.php:172
+#: includes/Gateway.php:162
 #, php-format
 msgid "%s — custom RPC URL"
 msgstr ""
 
 #. translators: %s: the default public RPC URL for the network.
-#: includes/Gateway.php:175
+#: includes/Gateway.php:165
 #, php-format
 msgid "Optional. Leave blank to use the free public node (%s)."
 msgstr ""
 
-#: includes/Gateway.php:184
-#: includes/Gateway.php:189
+#: includes/Gateway.php:174
+#: includes/Gateway.php:179
 #: includes/PaymentChecker.php:186
 #: includes/PayPage.php:578
 msgid "Bitcoin"
 msgstr ""
 
-#: includes/Gateway.php:186
+#: includes/Gateway.php:176
 msgid "Accept native BTC to your own Bitcoin address, confirmed via free public block explorers. Leave the address blank to disable Bitcoin."
 msgstr ""
 
-#: includes/Gateway.php:191
+#: includes/Gateway.php:181
 msgid "Accept native Bitcoin (BTC)"
 msgstr ""
 
-#: includes/Gateway.php:195
+#: includes/Gateway.php:185
 msgid "BTC receiving address"
 msgstr ""
 
-#: includes/Gateway.php:197
+#: includes/Gateway.php:187
 msgid "Your Bitcoin mainnet address (bc1…, 1… or 3…). The checksum is verified on save; a typo will be rejected."
 msgstr ""
 
-#: includes/Gateway.php:207
+#: includes/Gateway.php:197
 msgid "Bitcoin — confirmations"
 msgstr ""
 
-#: includes/Gateway.php:209
+#: includes/Gateway.php:199
 msgid "Confirmations required before a Bitcoin order is completed. 1–2 is common for small amounts; more is safer."
 msgstr ""
 
-#: includes/Gateway.php:219
+#: includes/Gateway.php:209
 msgid "Bitcoin — custom explorer URL"
 msgstr ""
 
-#: includes/Gateway.php:221
+#: includes/Gateway.php:211
 msgid "Optional. An Esplora-compatible API base URL (e.g. your own mempool instance). Leave blank to use the free mempool.space and blockstream.info explorers."
 msgstr ""
 
-#: includes/Gateway.php:228
+#: includes/Gateway.php:218
 msgid "Pricing & tolerance"
 msgstr ""
 
-#: includes/Gateway.php:230
+#: includes/Gateway.php:220
 msgid "The order total is converted from your store currency to the chosen crypto at the live market rate when the buyer picks how to pay, and that amount is locked for them."
 msgstr ""
 
-#: includes/Gateway.php:233
+#: includes/Gateway.php:223
 msgid "Underpayment tolerance (%)"
 msgstr ""
 
-#: includes/Gateway.php:235
+#: includes/Gateway.php:225
 msgid "Accept a payment this many percent below the quoted amount, to absorb rate drift and rounding. 0 requires the exact amount or more."
 msgstr ""
 
-#: includes/Gateway.php:245
+#: includes/Gateway.php:235
 msgid "Payment window (minutes)"
 msgstr ""
 
-#: includes/Gateway.php:247
+#: includes/Gateway.php:237
 msgid "How long to keep polling the chain for a submitted payment before the order is marked failed."
 msgstr ""
 
-#: includes/Gateway.php:277
-msgid "The ETH receiving address is not a valid 0x… address. It was not saved."
+#: includes/Gateway.php:267
+msgid "The EVM receiving address is not a valid 0x… address. It was not saved."
 msgstr ""
 
-#: includes/Gateway.php:283
+#: includes/Gateway.php:273
 msgid "The EVM receiving address has an invalid checksum (likely a typo). It was not saved."
 msgstr ""
 
-#: includes/Gateway.php:307
+#: includes/Gateway.php:297
 msgid "The Bitcoin receiving address is not a valid mainnet address (bc1…, 1… or 3…). It was not saved."
 msgstr ""
 
-#: includes/Gateway.php:350
+#: includes/Gateway.php:340
 msgid "Self-custodial crypto checkout — ETH, USDC, USDT & BTC — free and open, by Shadow Software LLC."
 msgstr ""
 
-#: includes/Gateway.php:355
+#: includes/Gateway.php:345
 msgid "Your wallet, your keys"
 msgstr ""
 
-#: includes/Gateway.php:356
+#: includes/Gateway.php:346
 msgid "On-chain verified"
 msgstr ""
 
-#: includes/Gateway.php:357
+#: includes/Gateway.php:347
 msgid "Free public nodes"
 msgstr ""
 
-#: includes/Gateway.php:358
+#: includes/Gateway.php:348
 msgid "No fees · No middleman"
 msgstr ""
 
-#: includes/Gateway.php:361
+#: includes/Gateway.php:351
 msgid "Payments are sent by customers directly to your wallet and settle on a public blockchain. On-chain payments are irreversible and cannot be refunded or recovered by this plugin — treat a confirmed order like cash, and always confirm your receiving address is correct."
 msgstr ""
 
 #. translators: %s: the installed plugin version.
-#: includes/Gateway.php:367
+#: includes/Gateway.php:357
 #, php-format
 msgid "Version %s"
 msgstr ""
 
-#: includes/Gateway.php:371
-msgid "WordPress & WooCommerce services by Shadow Software"
+#: includes/Gateway.php:361
+#: includes/Plugin.php:196
+msgid "Documentation"
 msgstr ""
 
-#: includes/Gateway.php:373
+#: includes/Gateway.php:362
+#: includes/Plugin.php:197
 msgid "Support"
 msgstr ""
 
-#: includes/Gateway.php:374
-#: includes/Plugin.php:197
-msgid "Terms"
+#. translators: %s: the plugin author, linked.
+#: includes/Gateway.php:368
+#, php-format
+msgid "by %s"
 msgstr ""
 
-#: includes/Gateway.php:375
-#: includes/PayPage.php:285
-#: includes/Plugin.php:198
-msgid "Privacy"
-msgstr ""
-
-#: includes/Gateway.php:594
+#: includes/Gateway.php:591
 #: includes/PayPage.php:350
 #: includes/PayPage.php:480
 #: includes/PayPage.php:527
 msgid "Order not found."
 msgstr ""
 
-#: includes/Gateway.php:598
+#: includes/Gateway.php:595
 msgid "This store has not finished setting up crypto payments. Please choose another method."
 msgstr ""
 
-#: includes/Gateway.php:609
+#: includes/Gateway.php:606
 msgid "Awaiting crypto payment. Buyer will choose an asset and pay on the order page."
 msgstr ""
 
-#: includes/Gateway.php:640
+#: includes/Gateway.php:637
 msgid "Please choose a valid payment option."
 msgstr ""
 
-#: includes/Gateway.php:646
+#: includes/Gateway.php:643
 msgid "This payment option is not available right now. Please choose another."
 msgstr ""
 
-#: includes/Gateway.php:653
+#: includes/Gateway.php:650
 msgid "Accept Crypto: could not fetch the live exchange rate to price this order."
 msgstr ""
 
-#: includes/Gateway.php:655
+#: includes/Gateway.php:652
 msgid "We could not fetch the live exchange rate. Please try again in a moment or choose another option."
 msgstr ""
 
-#: includes/Gateway.php:668
+#: includes/Gateway.php:665
 msgid "We could not price this order correctly. Please try again or choose another option."
 msgstr ""
 
@@ -431,88 +428,88 @@ msgstr ""
 msgid "Accept Crypto: %s"
 msgstr ""
 
-#: includes/PayPage.php:139
+#: includes/PayPage.php:140
 msgid "Choose how to pay"
 msgstr ""
 
-#: includes/PayPage.php:140
+#: includes/PayPage.php:141
 msgid "Pick the cryptocurrency and network you would like to pay with. We will then show the exact amount and address."
 msgstr ""
 
-#: includes/PayPage.php:149
+#: includes/PayPage.php:150
 msgid "Pay with"
 msgstr ""
 
 #. translators: 1: asset label, 2: network name.
-#: includes/PayPage.php:157
+#: includes/PayPage.php:158
 #, php-format
 msgid "%1$s on %2$s"
 msgstr ""
 
-#: includes/PayPage.php:168
+#: includes/PayPage.php:169
 msgid "Continue"
 msgstr ""
 
 #. translators: %s: asset symbol.
-#: includes/PayPage.php:204
+#: includes/PayPage.php:205
 #, php-format
 msgid "Pay with %s"
 msgstr ""
 
 #. translators: 1: amount, 2: asset symbol.
-#: includes/PayPage.php:214
+#: includes/PayPage.php:215
 #, php-format
 msgid "Send exactly %1$s %2$s"
 msgstr ""
 
 #. translators: %s: network name.
-#: includes/PayPage.php:225
+#: includes/PayPage.php:226
 #, php-format
 msgid "On the %s network."
 msgstr ""
 
-#: includes/PayPage.php:229
+#: includes/PayPage.php:230
 msgid "Change"
 msgstr ""
 
-#: includes/PayPage.php:233
+#: includes/PayPage.php:234
 msgid "Pay to this address"
 msgstr ""
 
-#: includes/PayPage.php:236
+#: includes/PayPage.php:237
 #: includes/PayPage.php:624
 msgid "Copy"
 msgstr ""
 
-#: includes/PayPage.php:249
+#: includes/PayPage.php:250
 msgid "After you have sent the payment, confirm it below so we can check the blockchain and complete your order."
 msgstr ""
 
-#: includes/PayPage.php:252
+#: includes/PayPage.php:253
 msgid "The wallet address you paid from (required)"
 msgstr ""
 
-#: includes/PayPage.php:254
+#: includes/PayPage.php:255
 msgid "Copy this from your wallet — it is your own “from” address. We use it to confirm the payment is yours, so it is required even if you also add a transaction ID below."
 msgstr ""
 
-#: includes/PayPage.php:258
+#: includes/PayPage.php:259
 msgid "I have a transaction ID (optional, but fastest)"
 msgstr ""
 
-#: includes/PayPage.php:260
+#: includes/PayPage.php:261
 msgid "Transaction hash"
 msgstr ""
 
-#: includes/PayPage.php:262
+#: includes/PayPage.php:263
 msgid "Your wallet shows this after the payment sends (sometimes called “Transaction ID” or “Hash”). Pasting it confirms your order the fastest."
 msgstr ""
 
-#: includes/PayPage.php:266
+#: includes/PayPage.php:267
 msgid "I’ve paid — check my payment"
 msgstr ""
 
-#: includes/PayPage.php:284
+#: includes/PayPage.php:285
 msgid "Payments are made on a public blockchain and are irreversible once confirmed. Only the payment details you enter here are used, together with public blockchain data, to confirm your order."
 msgstr ""
 
@@ -521,7 +518,7 @@ msgid "Payment confirmed"
 msgstr ""
 
 #: includes/PayPage.php:316
-msgid "Thank you — your Ethereum payment is confirmed and your order is complete."
+msgid "Thank you — your payment is confirmed and your order is complete."
 msgstr ""
 
 #: includes/PayPage.php:318
@@ -595,10 +592,6 @@ msgstr ""
 
 #: includes/Plugin.php:164
 msgid "Settings"
-msgstr ""
-
-#: includes/Plugin.php:196
-msgid "Docs & services"
 msgstr ""
 
 #: includes/RpcClient.php:118

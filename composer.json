@@ -1,6 +1,6 @@
 {
     "name": "shadow-software/crypto-woocommerce",
-    "description": "Free, self-custodial crypto payment gateway for WooCommerce — ETH, USDC, USDT and Bitcoin. Customers pay the merchant's own wallets; payments are confirmed on-chain with free public nodes and explorers. By Shadow Software.",
+    "description": "A simple, free, open-source plugin to confirm common blockchain transactions (USDT/USDC/BTC/ETH) and mark orders paid in WooCommerce. By Shadow Software.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "homepage": "https://shadowsoftware.com/",

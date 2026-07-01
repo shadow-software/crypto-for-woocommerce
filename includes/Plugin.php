@@ -193,9 +193,8 @@ final class Plugin {
 			return $links;
 		}
 
-		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Docs & services', 'crypto-woocommerce' ) . '</a>';
-		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/terms' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Terms', 'crypto-woocommerce' ) . '</a>';
-		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/privacy' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Privacy', 'crypto-woocommerce' ) . '</a>';
+		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Documentation', 'crypto-woocommerce' ) . '</a>';
+		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/contact' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Support', 'crypto-woocommerce' ) . '</a>';
 
 		return $links;
 	}

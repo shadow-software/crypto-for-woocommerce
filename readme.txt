@@ -3,7 +3,7 @@ Contributors: shadowsoftware
 Donate link: https://shadowsoftware.com/
 Tags: woocommerce, crypto, bitcoin, ethereum, stablecoin
 Requires at least: 6.4
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 8.0
 Stable tag: 1.0.0
 WC requires at least: 8.2
@@ -11,7 +11,7 @@ WC tested up to: 10.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Accept self-custodial crypto in WooCommerce — ETH, USDC, USDT and Bitcoin. Customers pay your own wallets directly; payments are confirmed on-chain with free tools.
+A simple, free, open-source plugin to confirm common blockchain transactions (USDT/USDC/BTC/ETH) and mark orders paid in Woocommerce.
 
 == Description ==
 
@@ -29,8 +29,7 @@ Supported payments:
 * **Bitcoin (BTC)** — native BTC on the Bitcoin mainnet.
 
 This plugin is completely free and open source. It is built and maintained by
-[Shadow Software](https://shadowsoftware.com/), a WordPress and WooCommerce
-development studio — if you need custom store work, that is what we do.
+[Shadow Software](https://shadowsoftware.com/).
 
 = How it works =
 
@@ -69,22 +68,22 @@ development studio — if you need custom store work, that is what we do.
 
 = What this plugin is not =
 
-It does not custody funds, provide refunds on-chain, swap tokens, or handle
-stablecoins/ERC-20 transfers — it verifies **native ETH** payments to your own
-address. Because payments are on-chain and irreversible, treat confirmed orders
-like cash.
+It does not custody funds, provide refunds on-chain, or swap/convert between
+currencies. It confirms native ETH, USDC, USDT and BTC payments to your own
+addresses and marks the order paid. Because payments are on-chain and
+irreversible, treat confirmed orders like cash.
 
 == Installation ==
 
-1. Upload the `accept-stablecoins-with-woocommerce` folder to `/wp-content/plugins/`,
-   or install the ZIP via Plugins → Add New → Upload.
+1. Upload the `crypto-woocommerce` folder to `/wp-content/plugins/`, or install
+   the ZIP via Plugins → Add New → Upload.
 2. Activate the plugin through the Plugins menu.
-3. Go to WooCommerce → Settings → Payments → **Ethereum (self-custodial)**.
-4. Enable it and paste your **ETH receiving address**.
-5. Tick the networks you want to accept (Ethereum is on by default) and, if you
-   like, adjust the required confirmations, underpayment tolerance, and payment
-   window.
-6. Save. "Pay with Ethereum (ETH)" now appears at checkout.
+3. Go to WooCommerce → Settings → Payments → **Crypto (self-custodial)**.
+4. Enable it and paste your **EVM receiving address** (for ETH/USDC/USDT) and/or
+   your **Bitcoin address**, then tick which assets and networks to accept.
+5. Optionally adjust the required confirmations, underpayment tolerance, and
+   payment window.
+6. Save. "Pay with crypto" now appears at checkout.
 
 WooCommerce's background scheduler (Action Scheduler) drives the on-chain checks,
 so make sure your site's cron is running normally.
@@ -99,9 +98,8 @@ stored.
 
 = Is there any fee or account to sign up for? =
 
-No. The plugin is free, there is no gateway service, and nothing takes a cut of
-your sales. It exists partly to showcase the WooCommerce work done by Shadow
-Software.
+No. The plugin is free and open source, there is no gateway service, and nothing
+takes a cut of your sales.
 
 = Which assets and networks are supported? =
 

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Accept Crypto for WooCommerce
  * Plugin URI:        https://shadowsoftware.com/
- * Description:       Accept self-custodial crypto payments in WooCommerce — ETH, USDC and USDT on Ethereum, Base, Arbitrum and OP Mainnet, plus native Bitcoin. Enter your own receiving addresses; customers pay them directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No middleman, no fees, no keys on your server.
+ * Description:       A simple, free, open-source plugin to confirm common blockchain transactions (USDT/USDC/BTC/ETH) and mark orders paid in Woocommerce. Enter your own receiving addresses; customers pay them directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No middleman, no fees, no keys on your server.
  * Version:           1.0.0
  * Requires at least: 6.4
  * Requires PHP:      8.0

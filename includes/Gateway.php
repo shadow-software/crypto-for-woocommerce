@@ -26,22 +26,12 @@ defined( 'ABSPATH' ) || exit;
 final class Gateway extends \WC_Payment_Gateway {
 
 	/**
-	 * Shadow Software marketing origin (for the branded settings header links).
+	 * Shadow Software author URL (for the settings-screen author credit).
 	 */
 	private const BRAND_URL = 'https://shadowsoftware.com';
 
 	/**
-	 * Shadow Software Terms of Service.
-	 */
-	private const TERMS_URL = 'https://shadowsoftware.com/terms';
-
-	/**
-	 * Shadow Software Privacy Policy.
-	 */
-	private const PRIVACY_URL = 'https://shadowsoftware.com/privacy';
-
-	/**
-	 * Support / contact page.
+	 * Documentation / support page.
 	 */
 	private const SUPPORT_URL = 'https://shadowsoftware.com/contact';
 
@@ -51,7 +41,7 @@ final class Gateway extends \WC_Payment_Gateway {
 	public function __construct() {
 		$this->id                 = SHADOW_ETH_GATEWAY_ID;
 		$this->method_title       = __( 'Crypto (self-custodial)', 'crypto-woocommerce' );
-		$this->method_description = __( 'Accept crypto straight to your own wallets — ETH, USDC and USDT on Ethereum, Base, Arbitrum and OP Mainnet, plus native Bitcoin. The order total is converted at the live rate; the buyer pays your address directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No custody, no fees, no keys on your server.', 'crypto-woocommerce' );
+		$this->method_description = __( 'Confirm common blockchain transactions (USDT, USDC, BTC and ETH) and mark orders paid — straight to your own wallets. The order total is converted at the live rate; the buyer pays your address directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No custody, no fees, no keys on your server.', 'crypto-woocommerce' );
 		$this->has_fields         = false;
 		$this->supports           = array( 'products' );
 		$this->icon               = SHADOW_ETH_URL . 'assets/img/crypto.svg';
@@ -274,7 +264,7 @@ final class Gateway extends \WC_Payment_Gateway {
 		}
 
 		if ( ! Address::is_valid_format( $value ) ) {
-			\WC_Admin_Settings::add_error( __( 'The ETH receiving address is not a valid 0x… address. It was not saved.', 'crypto-woocommerce' ) );
+			\WC_Admin_Settings::add_error( __( 'The EVM receiving address is not a valid 0x… address. It was not saved.', 'crypto-woocommerce' ) );
 
 			return (string) $this->get_option( $key, '' );
 		}
@@ -368,11 +358,18 @@ final class Gateway extends \WC_Payment_Gateway {
 					?>
 				</span>
 				<span class="sh-sep" aria-hidden="true">·</span>
-				<a href="<?php echo esc_url( $services ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'WordPress & WooCommerce services by Shadow Software', 'crypto-woocommerce' ); ?></a>
-				<span class="sh-sep" aria-hidden="true">·</span>
+				<a href="<?php echo esc_url( self::SUPPORT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Documentation', 'crypto-woocommerce' ); ?></a>
 				<a href="<?php echo esc_url( self::SUPPORT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Support', 'crypto-woocommerce' ); ?></a>
-				<a href="<?php echo esc_url( self::TERMS_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Terms', 'crypto-woocommerce' ); ?></a>
-				<a href="<?php echo esc_url( self::PRIVACY_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Privacy', 'crypto-woocommerce' ); ?></a>
+				<span class="sh-sep" aria-hidden="true">·</span>
+				<span class="shadow-eth-admin__by">
+					<?php
+					printf(
+						/* translators: %s: the plugin author, linked. */
+						esc_html__( 'by %s', 'crypto-woocommerce' ),
+						'<a href="' . esc_url( $services ) . '" target="_blank" rel="noopener noreferrer">Shadow Software</a>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- URL escaped inline; author name is a fixed literal.
+					);
+					?>
+				</span>
 			</div>
 		</div>
 		<?php

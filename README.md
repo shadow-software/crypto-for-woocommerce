@@ -5,9 +5,10 @@
 <h1 align="center">Accept Crypto for WooCommerce</h1>
 
 <p align="center">
-  <strong>Free, self-custodial cryptocurrency payments for WooCommerce.</strong><br>
-  Accept <b>ETH</b>, <b>USDC</b>, <b>USDT</b> and <b>Bitcoin</b> straight to your own wallets —
-  confirmed on-chain with free public tools. No middleman, no fees, no keys on your server.
+  <strong>A simple, free, open-source plugin to confirm common blockchain transactions
+  (USDT / USDC / BTC / ETH) and mark orders paid in WooCommerce.</strong><br>
+  Customers pay your own wallets directly — payments are confirmed on-chain with free
+  public tools. No middleman, no fees, no keys on your server.
 </p>
 
 <p align="center">

@@ -132,3 +132,20 @@
 .shadow-eth-admin .sh-sep {
 	color: var(--sh-line);
 }
+
+.shadow-eth-admin__by {
+	color: var(--sh-text-3);
+}
+
+.shadow-eth-admin__by a {
+	color: var(--sh-text-2);
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.shadow-eth-admin__by a:hover,
+.shadow-eth-admin__by a:focus {
+	color: var(--sh-green-bright);
+	border-bottom-color: rgba(143, 212, 104, 0.5);
+}

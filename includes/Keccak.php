@@ -8,8 +8,11 @@
  * Ethereum needs (256-bit output). It is used only for hashing short address
  * strings, never for anything performance-sensitive.
  *
- * Derived from the public-domain reference sponge construction; adapted to
- * WordPress coding standards.
+ * Derived from the public-domain Keccak reference sponge construction (the
+ * Keccak team dedicated the reference implementation to the public domain), and
+ * re-implemented here from the algorithm specification. Public-domain code is
+ * GPL-compatible; this file is distributed under this plugin's GPL-2.0-or-later
+ * license.
  *
  * @package ShadowEth
  */

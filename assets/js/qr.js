@@ -3,8 +3,10 @@
  *
  * Bundled so the pay page can show a scannable payment QR entirely offline — no
  * CDN, no remote image service, nothing that would violate wp.org's "no calling
- * home" rule. Based on the public-domain QR Code generator algorithm; trimmed to
- * byte mode with automatic version/ECC selection sufficient for Ethereum URIs.
+ * home" rule. Implemented from the public, published QR Code / Reed-Solomon
+ * algorithm (the underlying generator algorithm is in the public domain and is
+ * GPL-compatible); trimmed to byte mode with automatic version/ECC selection.
+ * This file is distributed under this plugin's GPL-2.0-or-later license.
  *
  * Exposes window.ShadowEthQR.render( element, text ).
  */

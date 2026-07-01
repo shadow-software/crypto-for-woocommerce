@@ -4,12 +4,13 @@
  *
  * Rendered on WooCommerce's order-pay endpoint for orders placed with this
  * gateway. The buyer:
- *   1. picks a network (from the ones the merchant enabled),
- *   2. sees the exact ETH amount and the store's address (with a QR code and a
+ *   1. chooses which crypto to pay in (ETH, USDC, USDT or BTC, from the assets
+ *      and networks the merchant enabled),
+ *   2. sees the exact amount and the store's address (with a QR code and a
  *      one-tap copy button),
  *   3. pays from their own wallet, then
- *   4. tells us how — by pasting the transaction hash, or (for buyers who don't
- *      know what that is) just their sending wallet address.
+ *   4. tells us how — with the wallet address they paid from and, optionally,
+ *      the transaction id.
  *
  * Submission is a POST to admin-post.php, nonce-verified and bound to the order
  * key, which flips the order into "verifying" and kicks off the background
@@ -273,8 +274,8 @@ final class PayPage {
 
 	/**
 	 * Render the small legal/privacy footer shown under the pay form. Discloses
-	 * the irreversible nature of on-chain payments and links the author's privacy
-	 * policy, giving the buyer the same transparency the readme promises.
+	 * the irreversible nature of on-chain payments. This is purely informational
+	 * and carries no outbound links — the buyer-facing checkout stays unbranded.
 	 *
 	 * @return void
 	 */
@@ -282,7 +283,6 @@ final class PayPage {
 		?>
 		<p class="shadow-eth-pay__footer">
 			<?php esc_html_e( 'Payments are made on a public blockchain and are irreversible once confirmed. Only the payment details you enter here are used, together with public blockchain data, to confirm your order.', 'crypto-woocommerce' ); ?>
-			<a href="<?php echo esc_url( 'https://shadowsoftware.com/privacy' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Privacy', 'crypto-woocommerce' ); ?></a>
 		</p>
 		<?php
 	}
@@ -313,7 +313,7 @@ final class PayPage {
 			data-poll="<?php echo $is_confirmed || $is_failed ? '0' : '1'; ?>">
 			<?php if ( $is_confirmed ) : ?>
 				<h2 class="shadow-eth-pay__heading"><?php esc_html_e( 'Payment confirmed', 'crypto-woocommerce' ); ?></h2>
-				<p class="shadow-eth-pay__status-msg"><?php esc_html_e( 'Thank you — your Ethereum payment is confirmed and your order is complete.', 'crypto-woocommerce' ); ?></p>
+				<p class="shadow-eth-pay__status-msg"><?php esc_html_e( 'Thank you — your payment is confirmed and your order is complete.', 'crypto-woocommerce' ); ?></p>
 				<?php if ( '' !== $explorer ) : ?>
 					<p><a href="<?php echo esc_url( $explorer ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'View the transaction', 'crypto-woocommerce' ); ?></a></p>
 				<?php endif; ?>
