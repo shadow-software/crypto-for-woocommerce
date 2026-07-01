@@ -3,7 +3,7 @@ Contributors: shadowsoftware
 Donate link: https://shadowsoftware.com/
 Tags: woocommerce, crypto, bitcoin, ethereum, stablecoin
 Requires at least: 6.4
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 8.0
 Stable tag: 1.0.0
 WC requires at least: 8.2

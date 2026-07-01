@@ -161,7 +161,7 @@ final class Plugin {
 		$settings_url = admin_url( 'admin.php?page=wc-settings&tab=checkout&section=' . SHADOW_ETH_GATEWAY_ID );
 
 		$plugin_links = array(
-			'<a href="' . esc_url( $settings_url ) . '">' . esc_html__( 'Settings', 'crypto-woocommerce' ) . '</a>',
+			'<a href="' . esc_url( $settings_url ) . '">' . esc_html__( 'Settings', 'accept-crypto-for-woocommerce' ) . '</a>',
 		);
 
 		return array_merge( $plugin_links, $links );
@@ -193,8 +193,8 @@ final class Plugin {
 			return $links;
 		}
 
-		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Documentation', 'crypto-woocommerce' ) . '</a>';
-		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/contact' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Support', 'crypto-woocommerce' ) . '</a>';
+		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Documentation', 'accept-crypto-for-woocommerce' ) . '</a>';
+		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/contact' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Support', 'accept-crypto-for-woocommerce' ) . '</a>';
 
 		return $links;
 	}

@@ -115,7 +115,7 @@ final class RpcClient {
 		$result = $this->call( 'eth_chainId', array() );
 
 		if ( ! is_string( $result ) || 1 !== preg_match( '/^0x[0-9a-fA-F]+$/', $result ) ) {
-			throw new RpcException( esc_html__( 'Could not verify the network of the RPC endpoint.', 'crypto-woocommerce' ) );
+			throw new RpcException( esc_html__( 'Could not verify the network of the RPC endpoint.', 'accept-crypto-for-woocommerce' ) );
 		}
 
 		$actual_hex = ltrim( substr( $result, 2 ), '0' );
@@ -126,7 +126,7 @@ final class RpcClient {
 				esc_html(
 					sprintf(
 						/* translators: 1: expected chain id, 2: actual chain id. */
-						__( 'RPC endpoint is on the wrong network (expected chain %1$d, got %2$d).', 'crypto-woocommerce' ),
+						__( 'RPC endpoint is on the wrong network (expected chain %1$d, got %2$d).', 'accept-crypto-for-woocommerce' ),
 						$expected,
 						$actual
 					)
@@ -148,14 +148,14 @@ final class RpcClient {
 
 		// A well-behaved node returns a 0x hex string; anything else is bogus.
 		if ( ! is_string( $result ) || 1 !== preg_match( '/^0x[0-9a-fA-F]+$/', $result ) ) {
-			throw new RpcException( esc_html__( 'Invalid block number from RPC endpoint.', 'crypto-woocommerce' ) );
+			throw new RpcException( esc_html__( 'Invalid block number from RPC endpoint.', 'accept-crypto-for-woocommerce' ) );
 		}
 
 		$hex = ltrim( substr( $result, 2 ), '0' );
 
 		// Reject an absurd height that would overflow int into a lossy float.
 		if ( strlen( $hex ) > 15 ) {
-			throw new RpcException( esc_html__( 'Out-of-range block number from RPC endpoint.', 'crypto-woocommerce' ) );
+			throw new RpcException( esc_html__( 'Out-of-range block number from RPC endpoint.', 'accept-crypto-for-woocommerce' ) );
 		}
 
 		return '' === $hex ? 0 : (int) hexdec( $hex );
@@ -302,7 +302,7 @@ final class RpcClient {
 				'reject_unsafe_urls' => true,
 				'headers'            => array( 'Content-Type' => 'application/json' ),
 				'body'               => $body,
-				'user-agent'         => 'crypto-woocommerce/' . SHADOW_ETH_VERSION . '; ' . home_url(),
+				'user-agent'         => 'accept-crypto-for-woocommerce/' . SHADOW_ETH_VERSION . '; ' . home_url(),
 			)
 		);
 

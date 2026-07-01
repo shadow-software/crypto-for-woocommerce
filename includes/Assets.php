@@ -62,7 +62,7 @@ final class Assets {
 				'id'           => 'eth:' . $slug,
 				'kind'         => self::KIND_NATIVE_EVM,
 				'symbol'       => 'ETH',
-				'label'        => __( 'Ether (ETH)', 'crypto-woocommerce' ),
+				'label'        => __( 'Ether (ETH)', 'accept-crypto-for-woocommerce' ),
 				'network'      => $slug,
 				'decimals'     => 18,
 				'coingecko_id' => 'ethereum',
@@ -79,7 +79,7 @@ final class Assets {
 			'id'           => 'btc:bitcoin',
 			'kind'         => self::KIND_BTC,
 			'symbol'       => 'BTC',
-			'label'        => __( 'Bitcoin (BTC)', 'crypto-woocommerce' ),
+			'label'        => __( 'Bitcoin (BTC)', 'accept-crypto-for-woocommerce' ),
 			'network'      => 'bitcoin',
 			'decimals'     => 8,
 			'coingecko_id' => 'bitcoin',
@@ -103,7 +103,7 @@ final class Assets {
 		$map = array(
 			'USDC' => array(
 				'coingecko_id' => 'usd-coin',
-				'label'        => __( 'USD Coin (USDC)', 'crypto-woocommerce' ),
+				'label'        => __( 'USD Coin (USDC)', 'accept-crypto-for-woocommerce' ),
 				'decimals'     => 6,
 				'contracts'    => array(
 					'ethereum' => '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
@@ -114,7 +114,7 @@ final class Assets {
 			),
 			'USDT' => array(
 				'coingecko_id' => 'tether',
-				'label'        => __( 'Tether (USDT)', 'crypto-woocommerce' ),
+				'label'        => __( 'Tether (USDT)', 'accept-crypto-for-woocommerce' ),
 				'decimals'     => 6,
 				'contracts'    => array(
 					'ethereum' => '0xdAC17F958D2ee523a2206206994597C13D831ec7',

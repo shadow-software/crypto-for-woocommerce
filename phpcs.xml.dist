@@ -29,11 +29,11 @@
 		domain, and every global symbol must carry one of our prefixes. This is
 		what keeps the plugin from polluting the global namespace.
 	-->
-	<config name="text_domain" value="crypto-woocommerce"/>
+	<config name="text_domain" value="accept-crypto-for-woocommerce"/>
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="crypto-woocommerce"/>
+				<element value="accept-crypto-for-woocommerce"/>
 			</property>
 		</properties>
 	</rule>

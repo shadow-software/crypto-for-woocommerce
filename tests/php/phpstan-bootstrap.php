@@ -9,7 +9,7 @@
  */
 
 define( 'SHADOW_ETH_VERSION', '1.0.0' );
-define( 'SHADOW_ETH_FILE', __DIR__ . '/../../crypto-woocommerce.php' );
+define( 'SHADOW_ETH_FILE', __DIR__ . '/../../accept-crypto-for-woocommerce.php' );
 define( 'SHADOW_ETH_PATH', __DIR__ . '/../../' );
-define( 'SHADOW_ETH_URL', 'https://example.test/wp-content/plugins/crypto-woocommerce/' );
+define( 'SHADOW_ETH_URL', 'https://example.test/wp-content/plugins/accept-crypto-for-woocommerce/' );
 define( 'SHADOW_ETH_GATEWAY_ID', 'shadow_eth' );

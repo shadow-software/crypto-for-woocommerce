@@ -77,7 +77,7 @@ final class BlocksSupport extends AbstractPaymentMethodType {
 		);
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations( $handle, 'crypto-woocommerce' );
+			wp_set_script_translations( $handle, 'accept-crypto-for-woocommerce' );
 		}
 
 		return array( $handle );
@@ -92,7 +92,7 @@ final class BlocksSupport extends AbstractPaymentMethodType {
 		$gateway = $this->get_gateway();
 
 		return array(
-			'title'       => $gateway instanceof Gateway ? $gateway->title : __( 'Pay with crypto (ETH, USDC, USDT, BTC)', 'crypto-woocommerce' ),
+			'title'       => $gateway instanceof Gateway ? $gateway->title : __( 'Pay with crypto (ETH, USDC, USDT, BTC)', 'accept-crypto-for-woocommerce' ),
 			'description' => $gateway instanceof Gateway ? $gateway->description : '',
 			'icon'        => SHADOW_ETH_URL . 'assets/img/crypto.svg',
 			'supports'    => array( 'products' ),

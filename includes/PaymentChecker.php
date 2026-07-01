@@ -135,7 +135,7 @@ final class PaymentChecker {
 
 		// Still pending. Give up if the payment window has elapsed.
 		if ( $this->window_elapsed( $order, $gateway ) ) {
-			$this->fail_order( $order, __( 'We did not detect a matching payment within the payment window.', 'crypto-woocommerce' ) );
+			$this->fail_order( $order, __( 'We did not detect a matching payment within the payment window.', 'accept-crypto-for-woocommerce' ) );
 
 			return;
 		}
@@ -168,7 +168,7 @@ final class PaymentChecker {
 					$owner
 				)
 			);
-			$this->fail_order( $order, __( 'This transaction has already been used to pay another order.', 'crypto-woocommerce' ) );
+			$this->fail_order( $order, __( 'This transaction has already been used to pay another order.', 'accept-crypto-for-woocommerce' ) );
 
 			return;
 		}
@@ -183,11 +183,11 @@ final class PaymentChecker {
 			: Networks::explorer_tx_url( $network, $result->tx_hash() );
 
 		$network_obj = Networks::get( $network );
-		$net_name    = null !== $network_obj ? $network_obj['name'] : ( 'bitcoin' === $network ? __( 'Bitcoin', 'crypto-woocommerce' ) : $network );
+		$net_name    = null !== $network_obj ? $network_obj['name'] : ( 'bitcoin' === $network ? __( 'Bitcoin', 'accept-crypto-for-woocommerce' ) : $network );
 
 		$note = sprintf(
 			/* translators: 1: asset symbol, 2: network name, 3: confirmations, 4: transaction hash. */
-			__( 'Accept Crypto: %1$s payment confirmed on %2$s with %3$d confirmations. Tx: %4$s', 'crypto-woocommerce' ),
+			__( 'Accept Crypto: %1$s payment confirmed on %2$s with %3$d confirmations. Tx: %4$s', 'accept-crypto-for-woocommerce' ),
 			$symbol,
 			$net_name,
 			$result->confirmations(),
@@ -221,7 +221,7 @@ final class PaymentChecker {
 			'failed',
 			sprintf(
 				/* translators: %s: reason the payment failed. */
-				__( 'Accept Crypto: %s', 'crypto-woocommerce' ),
+				__( 'Accept Crypto: %s', 'accept-crypto-for-woocommerce' ),
 				$message
 			)
 		);

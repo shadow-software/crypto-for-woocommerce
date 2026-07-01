@@ -5,7 +5,7 @@ parameters:
     level: 6
 
     paths:
-        - crypto-woocommerce.php
+        - accept-crypto-for-woocommerce.php
         - uninstall.php
         - includes
 

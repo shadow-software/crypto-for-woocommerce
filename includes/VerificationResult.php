@@ -71,7 +71,7 @@ final class VerificationResult {
 	public static function confirmed( string $tx_hash, int $confirmations ): self {
 		return new self(
 			self::STATUS_CONFIRMED,
-			__( 'Payment confirmed on-chain.', 'crypto-woocommerce' ),
+			__( 'Payment confirmed on-chain.', 'accept-crypto-for-woocommerce' ),
 			$tx_hash,
 			$confirmations
 		);

@@ -11,7 +11,7 @@
  * Author URI:        https://shadowsoftware.com/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       crypto-woocommerce
+ * Text Domain:       accept-crypto-for-woocommerce
  * Domain Path:       /languages
  *
  * WC requires at least: 8.2
@@ -114,7 +114,7 @@ add_action(
 				'admin_notices',
 				static function () {
 					echo '<div class="notice notice-error"><p>';
-					echo esc_html__( 'Accept Crypto for WooCommerce requires WooCommerce to be installed and active.', 'crypto-woocommerce' );
+					echo esc_html__( 'Accept Crypto for WooCommerce requires WooCommerce to be installed and active.', 'accept-crypto-for-woocommerce' );
 					echo '</p></div>';
 				}
 			);
