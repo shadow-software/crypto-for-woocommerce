@@ -1,0 +1,23 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 6
+
+    paths:
+        - crypto-woocommerce.php
+        - uninstall.php
+        - includes
+
+    # WooCommerce types (WC_Order, WC_Payment_Gateway, the Blocks classes, the
+    # wc_* functions) are not in the core WP stubs phpstan-wordpress ships, so
+    # pull in the WooCommerce stub package explicitly.
+    scanFiles:
+        - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+        - vendor/php-stubs/woocommerce-stubs/woocommerce-packages-stubs.php
+
+    # Constants the plugin defines at bootstrap (define()'d in the main file).
+    bootstrapFiles:
+        - tests/php/phpstan-bootstrap.php
+
+    treatPhpDocTypesAsCertain: false

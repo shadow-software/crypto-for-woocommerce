@@ -1,0 +1,680 @@
+# Copyright (C) 2026 Shadow Software LLC
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Accept Crypto for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/crypto-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-07-01T09:22:48+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: crypto-woocommerce\n"
+
+#. Plugin Name of the plugin
+#: crypto-woocommerce.php
+msgid "Accept Crypto for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: crypto-woocommerce.php
+msgid "https://shadowsoftware.com/"
+msgstr ""
+
+#. Description of the plugin
+#: crypto-woocommerce.php
+msgid "Accept self-custodial crypto payments in WooCommerce — ETH, USDC and USDT on Ethereum, Base, Arbitrum and OP Mainnet, plus native Bitcoin. Enter your own receiving addresses; customers pay them directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No middleman, no fees, no keys on your server."
+msgstr ""
+
+#. Author of the plugin
+#: crypto-woocommerce.php
+msgid "Shadow Software LLC"
+msgstr ""
+
+#: crypto-woocommerce.php:117
+msgid "Accept Crypto for WooCommerce requires WooCommerce to be installed and active."
+msgstr ""
+
+#: includes/Assets.php:65
+msgid "Ether (ETH)"
+msgstr ""
+
+#: includes/Assets.php:82
+msgid "Bitcoin (BTC)"
+msgstr ""
+
+#: includes/Assets.php:106
+msgid "USD Coin (USDC)"
+msgstr ""
+
+#: includes/Assets.php:117
+msgid "Tether (USDT)"
+msgstr ""
+
+#: includes/Blocks/BlocksSupport.php:95
+#: includes/Gateway.php:62
+#: includes/Gateway.php:91
+msgid "Pay with crypto (ETH, USDC, USDT, BTC)"
+msgstr ""
+
+#: includes/BtcExplorer.php:80
+msgid "Invalid tip height from the Bitcoin explorer."
+msgstr ""
+
+#: includes/BtcVerifier.php:75
+msgid "This payment is missing its Bitcoin address."
+msgstr ""
+
+#: includes/BtcVerifier.php:81
+#: includes/Verifier.php:138
+msgid "This order is missing its payment amount. Please contact us to complete it."
+msgstr ""
+
+#: includes/BtcVerifier.php:85
+#: includes/Verifier.php:177
+msgid "We need the wallet address you paid from to confirm this payment."
+msgstr ""
+
+#: includes/BtcVerifier.php:97
+msgid "Checking the Bitcoin network… we could not reach an explorer just now and will retry shortly."
+msgstr ""
+
+#: includes/BtcVerifier.php:112
+#: includes/Verifier.php:259
+msgid "That transaction has already been used to pay another order. Please make a new payment for this order."
+msgstr ""
+
+#: includes/BtcVerifier.php:118
+#: includes/Verifier.php:183
+msgid "Your transaction has not appeared on the network yet. This can take a moment after you send it."
+msgstr ""
+
+#: includes/BtcVerifier.php:157
+msgid "Looking for your payment on the Bitcoin network. If you have paid, this usually clears within a few minutes."
+msgstr ""
+
+#: includes/BtcVerifier.php:191
+msgid "That transaction did not pay the store address. Please check and try again."
+msgstr ""
+
+#: includes/BtcVerifier.php:196
+#: includes/Verifier.php:190
+msgid "That transaction was not sent from the wallet you entered. Please check and try again."
+msgstr ""
+
+#. translators: 1: amount paid in BTC, 2: amount required in BTC.
+#: includes/BtcVerifier.php:203
+#, php-format
+msgid "That payment was for %1$s BTC but %2$s BTC is required. If you underpaid, please send the difference in a new transaction."
+msgstr ""
+
+#: includes/BtcVerifier.php:215
+msgid "Payment found — waiting for it to be included in a block."
+msgstr ""
+
+#: includes/BtcVerifier.php:221
+msgid "Payment found — confirming. Please wait a moment."
+msgstr ""
+
+#: includes/BtcVerifier.php:233
+msgid "That transaction was confirmed before this order was placed, so it cannot pay for it. Please make a new payment."
+msgstr ""
+
+#. translators: 1: current confirmations, 2: required confirmations.
+#: includes/BtcVerifier.php:244
+#: includes/Verifier.php:310
+#, php-format
+msgid "Payment found — waiting for network confirmations (%1$d of %2$d)."
+msgstr ""
+
+#: includes/Gateway.php:53
+msgid "Crypto (self-custodial)"
+msgstr ""
+
+#: includes/Gateway.php:54
+msgid "Accept crypto straight to your own wallets — ETH, USDC and USDT on Ethereum, Base, Arbitrum and OP Mainnet, plus native Bitcoin. The order total is converted at the live rate; the buyer pays your address directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No custody, no fees, no keys on your server."
+msgstr ""
+
+#: includes/Gateway.php:63
+#: includes/Gateway.php:98
+msgid "Pay in crypto from your own wallet. After you place the order we show the exact amount and address to pay."
+msgstr ""
+
+#: includes/Gateway.php:82
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/Gateway.php:84
+msgid "Enable crypto payments"
+msgstr ""
+
+#: includes/Gateway.php:88
+msgid "Title"
+msgstr ""
+
+#: includes/Gateway.php:90
+msgid "Payment method title shown to the customer at checkout."
+msgstr ""
+
+#: includes/Gateway.php:95
+msgid "Description"
+msgstr ""
+
+#: includes/Gateway.php:97
+msgid "Payment method description shown to the customer at checkout."
+msgstr ""
+
+#: includes/Gateway.php:101
+msgid "Ethereum & tokens — receiving wallet"
+msgstr ""
+
+#: includes/Gateway.php:103
+msgid "The 0x… address every EVM customer pays (ETH, USDC and USDT all arrive at this one address on whichever network the buyer chooses). Use an address you control. Double-check it — funds are sent by customers directly and cannot be recovered by this plugin."
+msgstr ""
+
+#: includes/Gateway.php:106
+msgid "EVM receiving address (0x…)"
+msgstr ""
+
+#: includes/Gateway.php:108
+msgid "Your 0x… address. If you paste a checksummed (mixed-case) address it is verified; a typo will be rejected on save. Leave blank to disable ETH/USDC/USDT."
+msgstr ""
+
+#: includes/Gateway.php:119
+msgid "Networks & assets"
+msgstr ""
+
+#: includes/Gateway.php:121
+msgid "Choose which networks customers may pay on, and which assets (ETH / USDC / USDT) to accept on each. All use free public nodes by default; you can point any network at your own RPC endpoint below."
+msgstr ""
+
+#. translators: %s: network name.
+#: includes/Gateway.php:131
+#, php-format
+msgid "Accept payments on %s"
+msgstr ""
+
+#. translators: %s: network name.
+#: includes/Gateway.php:139
+#, php-format
+msgid "%s — assets"
+msgstr ""
+
+#: includes/Gateway.php:141
+msgid "ETH (native)"
+msgstr ""
+
+#. translators: %s: token symbol.
+#: includes/Gateway.php:152
+#, php-format
+msgid "%s (token)"
+msgstr ""
+
+#. translators: %s: network name.
+#: includes/Gateway.php:159
+#, php-format
+msgid "%s — confirmations"
+msgstr ""
+
+#: includes/Gateway.php:161
+msgid "Block confirmations required before the order is completed. Higher is safer but slower."
+msgstr ""
+
+#. translators: %s: network name.
+#: includes/Gateway.php:172
+#, php-format
+msgid "%s — custom RPC URL"
+msgstr ""
+
+#. translators: %s: the default public RPC URL for the network.
+#: includes/Gateway.php:175
+#, php-format
+msgid "Optional. Leave blank to use the free public node (%s)."
+msgstr ""
+
+#: includes/Gateway.php:184
+#: includes/Gateway.php:189
+#: includes/PaymentChecker.php:186
+#: includes/PayPage.php:578
+msgid "Bitcoin"
+msgstr ""
+
+#: includes/Gateway.php:186
+msgid "Accept native BTC to your own Bitcoin address, confirmed via free public block explorers. Leave the address blank to disable Bitcoin."
+msgstr ""
+
+#: includes/Gateway.php:191
+msgid "Accept native Bitcoin (BTC)"
+msgstr ""
+
+#: includes/Gateway.php:195
+msgid "BTC receiving address"
+msgstr ""
+
+#: includes/Gateway.php:197
+msgid "Your Bitcoin mainnet address (bc1…, 1… or 3…). The checksum is verified on save; a typo will be rejected."
+msgstr ""
+
+#: includes/Gateway.php:207
+msgid "Bitcoin — confirmations"
+msgstr ""
+
+#: includes/Gateway.php:209
+msgid "Confirmations required before a Bitcoin order is completed. 1–2 is common for small amounts; more is safer."
+msgstr ""
+
+#: includes/Gateway.php:219
+msgid "Bitcoin — custom explorer URL"
+msgstr ""
+
+#: includes/Gateway.php:221
+msgid "Optional. An Esplora-compatible API base URL (e.g. your own mempool instance). Leave blank to use the free mempool.space and blockstream.info explorers."
+msgstr ""
+
+#: includes/Gateway.php:228
+msgid "Pricing & tolerance"
+msgstr ""
+
+#: includes/Gateway.php:230
+msgid "The order total is converted from your store currency to the chosen crypto at the live market rate when the buyer picks how to pay, and that amount is locked for them."
+msgstr ""
+
+#: includes/Gateway.php:233
+msgid "Underpayment tolerance (%)"
+msgstr ""
+
+#: includes/Gateway.php:235
+msgid "Accept a payment this many percent below the quoted amount, to absorb rate drift and rounding. 0 requires the exact amount or more."
+msgstr ""
+
+#: includes/Gateway.php:245
+msgid "Payment window (minutes)"
+msgstr ""
+
+#: includes/Gateway.php:247
+msgid "How long to keep polling the chain for a submitted payment before the order is marked failed."
+msgstr ""
+
+#: includes/Gateway.php:277
+msgid "The ETH receiving address is not a valid 0x… address. It was not saved."
+msgstr ""
+
+#: includes/Gateway.php:283
+msgid "The EVM receiving address has an invalid checksum (likely a typo). It was not saved."
+msgstr ""
+
+#: includes/Gateway.php:307
+msgid "The Bitcoin receiving address is not a valid mainnet address (bc1…, 1… or 3…). It was not saved."
+msgstr ""
+
+#: includes/Gateway.php:350
+msgid "Self-custodial crypto checkout — ETH, USDC, USDT & BTC — free and open, by Shadow Software LLC."
+msgstr ""
+
+#: includes/Gateway.php:355
+msgid "Your wallet, your keys"
+msgstr ""
+
+#: includes/Gateway.php:356
+msgid "On-chain verified"
+msgstr ""
+
+#: includes/Gateway.php:357
+msgid "Free public nodes"
+msgstr ""
+
+#: includes/Gateway.php:358
+msgid "No fees · No middleman"
+msgstr ""
+
+#: includes/Gateway.php:361
+msgid "Payments are sent by customers directly to your wallet and settle on a public blockchain. On-chain payments are irreversible and cannot be refunded or recovered by this plugin — treat a confirmed order like cash, and always confirm your receiving address is correct."
+msgstr ""
+
+#. translators: %s: the installed plugin version.
+#: includes/Gateway.php:367
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: includes/Gateway.php:371
+msgid "WordPress & WooCommerce services by Shadow Software"
+msgstr ""
+
+#: includes/Gateway.php:373
+msgid "Support"
+msgstr ""
+
+#: includes/Gateway.php:374
+#: includes/Plugin.php:197
+msgid "Terms"
+msgstr ""
+
+#: includes/Gateway.php:375
+#: includes/PayPage.php:285
+#: includes/Plugin.php:198
+msgid "Privacy"
+msgstr ""
+
+#: includes/Gateway.php:594
+#: includes/PayPage.php:350
+#: includes/PayPage.php:480
+#: includes/PayPage.php:527
+msgid "Order not found."
+msgstr ""
+
+#: includes/Gateway.php:598
+msgid "This store has not finished setting up crypto payments. Please choose another method."
+msgstr ""
+
+#: includes/Gateway.php:609
+msgid "Awaiting crypto payment. Buyer will choose an asset and pay on the order page."
+msgstr ""
+
+#: includes/Gateway.php:640
+msgid "Please choose a valid payment option."
+msgstr ""
+
+#: includes/Gateway.php:646
+msgid "This payment option is not available right now. Please choose another."
+msgstr ""
+
+#: includes/Gateway.php:653
+msgid "Accept Crypto: could not fetch the live exchange rate to price this order."
+msgstr ""
+
+#: includes/Gateway.php:655
+msgid "We could not fetch the live exchange rate. Please try again in a moment or choose another option."
+msgstr ""
+
+#: includes/Gateway.php:668
+msgid "We could not price this order correctly. Please try again or choose another option."
+msgstr ""
+
+#: includes/Networks.php:43
+msgid "Ethereum"
+msgstr ""
+
+#: includes/Networks.php:54
+msgid "Base"
+msgstr ""
+
+#: includes/Networks.php:65
+msgid "Arbitrum One"
+msgstr ""
+
+#: includes/Networks.php:76
+msgid "OP Mainnet"
+msgstr ""
+
+#: includes/PaymentChecker.php:138
+msgid "We did not detect a matching payment within the payment window."
+msgstr ""
+
+#: includes/PaymentChecker.php:171
+msgid "This transaction has already been used to pay another order."
+msgstr ""
+
+#. translators: 1: asset symbol, 2: network name, 3: confirmations, 4: transaction hash.
+#: includes/PaymentChecker.php:190
+#, php-format
+msgid "Accept Crypto: %1$s payment confirmed on %2$s with %3$d confirmations. Tx: %4$s"
+msgstr ""
+
+#. translators: %s: reason the payment failed.
+#: includes/PaymentChecker.php:224
+#, php-format
+msgid "Accept Crypto: %s"
+msgstr ""
+
+#: includes/PayPage.php:139
+msgid "Choose how to pay"
+msgstr ""
+
+#: includes/PayPage.php:140
+msgid "Pick the cryptocurrency and network you would like to pay with. We will then show the exact amount and address."
+msgstr ""
+
+#: includes/PayPage.php:149
+msgid "Pay with"
+msgstr ""
+
+#. translators: 1: asset label, 2: network name.
+#: includes/PayPage.php:157
+#, php-format
+msgid "%1$s on %2$s"
+msgstr ""
+
+#: includes/PayPage.php:168
+msgid "Continue"
+msgstr ""
+
+#. translators: %s: asset symbol.
+#: includes/PayPage.php:204
+#, php-format
+msgid "Pay with %s"
+msgstr ""
+
+#. translators: 1: amount, 2: asset symbol.
+#: includes/PayPage.php:214
+#, php-format
+msgid "Send exactly %1$s %2$s"
+msgstr ""
+
+#. translators: %s: network name.
+#: includes/PayPage.php:225
+#, php-format
+msgid "On the %s network."
+msgstr ""
+
+#: includes/PayPage.php:229
+msgid "Change"
+msgstr ""
+
+#: includes/PayPage.php:233
+msgid "Pay to this address"
+msgstr ""
+
+#: includes/PayPage.php:236
+#: includes/PayPage.php:624
+msgid "Copy"
+msgstr ""
+
+#: includes/PayPage.php:249
+msgid "After you have sent the payment, confirm it below so we can check the blockchain and complete your order."
+msgstr ""
+
+#: includes/PayPage.php:252
+msgid "The wallet address you paid from (required)"
+msgstr ""
+
+#: includes/PayPage.php:254
+msgid "Copy this from your wallet — it is your own “from” address. We use it to confirm the payment is yours, so it is required even if you also add a transaction ID below."
+msgstr ""
+
+#: includes/PayPage.php:258
+msgid "I have a transaction ID (optional, but fastest)"
+msgstr ""
+
+#: includes/PayPage.php:260
+msgid "Transaction hash"
+msgstr ""
+
+#: includes/PayPage.php:262
+msgid "Your wallet shows this after the payment sends (sometimes called “Transaction ID” or “Hash”). Pasting it confirms your order the fastest."
+msgstr ""
+
+#: includes/PayPage.php:266
+msgid "I’ve paid — check my payment"
+msgstr ""
+
+#: includes/PayPage.php:284
+msgid "Payments are made on a public blockchain and are irreversible once confirmed. Only the payment details you enter here are used, together with public blockchain data, to confirm your order."
+msgstr ""
+
+#: includes/PayPage.php:315
+msgid "Payment confirmed"
+msgstr ""
+
+#: includes/PayPage.php:316
+msgid "Thank you — your Ethereum payment is confirmed and your order is complete."
+msgstr ""
+
+#: includes/PayPage.php:318
+msgid "View the transaction"
+msgstr ""
+
+#: includes/PayPage.php:321
+msgid "We couldn’t confirm your payment"
+msgstr ""
+
+#: includes/PayPage.php:322
+msgid "We did not detect a matching payment in time. If you did pay, please contact us with your transaction details and we’ll sort it out."
+msgstr ""
+
+#: includes/PayPage.php:324
+msgid "Confirming your payment…"
+msgstr ""
+
+#: includes/PayPage.php:325
+msgid "We’re checking the blockchain for your payment. This page updates automatically — you can safely leave it open."
+msgstr ""
+
+#: includes/PayPage.php:342
+#: includes/PayPage.php:484
+msgid "Security check failed. Please go back and try again."
+msgstr ""
+
+#: includes/PayPage.php:363
+msgid "Please choose how you want to pay first."
+msgstr ""
+
+#: includes/PayPage.php:409
+msgid "Accept Crypto: buyer submitted payment details; verifying on-chain."
+msgstr ""
+
+#: includes/PayPage.php:432
+msgid "Please enter the wallet address you paid from so we can confirm your payment."
+msgstr ""
+
+#: includes/PayPage.php:437
+msgid "That sending Bitcoin address doesn’t look right. It should start with bc1, 1 or 3."
+msgstr ""
+
+#: includes/PayPage.php:441
+msgid "That transaction ID doesn’t look right. It should be 64 hex characters."
+msgstr ""
+
+#: includes/PayPage.php:448
+msgid "That sending wallet address doesn’t look right. It should start with 0x and be 42 characters long."
+msgstr ""
+
+#: includes/PayPage.php:452
+msgid "That transaction hash doesn’t look right. It should start with 0x and be 66 characters long."
+msgstr ""
+
+#: includes/PayPage.php:533
+msgid "Security check failed."
+msgstr ""
+
+#: includes/PayPage.php:623
+msgid "Copied!"
+msgstr ""
+
+#: includes/PayPage.php:626
+msgid "Payment confirmed — finishing up…"
+msgstr ""
+
+#: includes/PayPage.php:627
+msgid "We couldn’t confirm your payment."
+msgstr ""
+
+#: includes/Plugin.php:164
+msgid "Settings"
+msgstr ""
+
+#: includes/Plugin.php:196
+msgid "Docs & services"
+msgstr ""
+
+#: includes/RpcClient.php:118
+msgid "Could not verify the network of the RPC endpoint."
+msgstr ""
+
+#. translators: 1: expected chain id, 2: actual chain id.
+#: includes/RpcClient.php:129
+#, php-format
+msgid "RPC endpoint is on the wrong network (expected chain %1$d, got %2$d)."
+msgstr ""
+
+#: includes/RpcClient.php:151
+msgid "Invalid block number from RPC endpoint."
+msgstr ""
+
+#: includes/RpcClient.php:158
+msgid "Out-of-range block number from RPC endpoint."
+msgstr ""
+
+#: includes/VerificationResult.php:74
+msgid "Payment confirmed on-chain."
+msgstr ""
+
+#: includes/Verifier.php:130
+msgid "This payment is missing its network configuration."
+msgstr ""
+
+#: includes/Verifier.php:157
+msgid "Checking the network… we could not reach a node just now and will retry shortly."
+msgstr ""
+
+#: includes/Verifier.php:160
+msgid "Waiting for your payment details."
+msgstr ""
+
+#: includes/Verifier.php:201
+msgid "That transaction is not a payment of the requested token. Please check and try again."
+msgstr ""
+
+#: includes/Verifier.php:211
+msgid "That transaction did not pay the store wallet. Please check the transaction and try again."
+msgstr ""
+
+#. translators: 1: amount paid, 2: amount required, 3: asset symbol.
+#: includes/Verifier.php:233
+#, php-format
+msgid "That payment was for %1$s %3$s but %2$s %3$s is required. If you underpaid, please send the difference in a new transaction."
+msgstr ""
+
+#: includes/Verifier.php:265
+msgid "Your payment was found and is waiting to be mined into a block."
+msgstr ""
+
+#: includes/Verifier.php:277
+msgid "That transaction failed on-chain (it was reverted), so no payment was received."
+msgstr ""
+
+#: includes/Verifier.php:281
+#: includes/Verifier.php:299
+msgid "Your payment is confirming. Please wait a moment."
+msgstr ""
+
+#: includes/Verifier.php:366
+msgid "That transaction did not include a token payment to the store from your wallet. Please check and try again."
+msgstr ""
+
+#: includes/Verifier.php:397
+msgid "Looking for your payment on the network. Please wait a moment."
+msgstr ""
+
+#: includes/Verifier.php:462
+#: includes/Verifier.php:516
+msgid "Looking for your payment on the network. If you have paid, this usually clears within a few minutes."
+msgstr ""
+
+#: includes/Verifier.php:482
+msgid "This order is missing valid payment addresses."
+msgstr ""

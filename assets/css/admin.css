@@ -1,0 +1,134 @@
+/**
+ * Admin-only Shadow Software branding for the gateway settings screen.
+ *
+ * Scoped under .shadow-eth-admin so nothing here leaks into the rest of
+ * wp-admin. The buyer-facing pay page is styled separately (pay.css) and
+ * inherits the store theme — this dark/green identity is applied only to the
+ * plugin's own settings surface.
+ */
+
+.shadow-eth-admin {
+	--sh-black: #060606;
+	--sh-dark: #0d0d0d;
+	--sh-line: #232323;
+	--sh-green: #8fd468;
+	--sh-green-bright: #9de073;
+	--sh-text: #ededed;
+	--sh-text-2: #b4b4b4;
+	--sh-text-3: #8c8c8c;
+
+	margin: 0 0 22px;
+	border-radius: 14px;
+	overflow: hidden;
+	border: 1px solid var(--sh-line);
+	background:
+		radial-gradient(120% 120% at 0% 0%, rgba(143, 212, 104, 0.10), transparent 55%),
+		var(--sh-black);
+	color: var(--sh-text);
+	font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.shadow-eth-admin__head {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 20px 24px;
+}
+
+.shadow-eth-admin__mark {
+	flex-shrink: 0;
+	width: 40px;
+	height: 44px;
+}
+
+.shadow-eth-admin__titles {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.shadow-eth-admin__wordmark {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: #fff;
+	line-height: 1.2;
+}
+
+.shadow-eth-admin__wordmark span {
+	color: var(--sh-green);
+}
+
+.shadow-eth-admin__tagline {
+	margin: 0;
+	font-size: 13px;
+	color: var(--sh-text-2);
+	line-height: 1.4;
+}
+
+.shadow-eth-admin__pills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	padding: 0 24px 18px;
+}
+
+.shadow-eth-admin__pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 11px;
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	background: rgba(143, 212, 104, 0.12);
+	color: var(--sh-green-bright);
+	border: 1px solid rgba(143, 212, 104, 0.25);
+}
+
+.shadow-eth-admin__pill--neutral {
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--sh-text-2);
+	border-color: var(--sh-line);
+}
+
+.shadow-eth-admin__notice {
+	margin: 0;
+	padding: 0 24px 18px;
+	max-width: 780px;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: var(--sh-text-3);
+}
+
+.shadow-eth-admin__meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 18px;
+	padding: 14px 24px;
+	border-top: 1px solid var(--sh-line);
+	background: var(--sh-dark);
+	font-size: 12.5px;
+	color: var(--sh-text-3);
+}
+
+.shadow-eth-admin__meta a {
+	color: var(--sh-text-2);
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.shadow-eth-admin__meta a:hover,
+.shadow-eth-admin__meta a:focus {
+	color: var(--sh-green-bright);
+	border-bottom-color: rgba(143, 212, 104, 0.5);
+}
+
+.shadow-eth-admin .sh-sep {
+	color: var(--sh-line);
+}

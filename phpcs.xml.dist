@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<ruleset name="Accept Ethereum for WooCommerce">
+	<description>
+		Coding standards for the Accept Ethereum for WooCommerce gateway.
+		WordPress-Extra + WordPress-Docs, with PHP 8.0+ compatibility.
+	</description>
+
+	<!-- What to scan. -->
+	<file>.</file>
+
+	<!-- What to skip. -->
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/tests/*</exclude-pattern>
+	<exclude-pattern>*/assets/js/blocks.asset.php</exclude-pattern>
+
+	<!-- Show sniff codes; colour; use all cores. -->
+	<arg value="ps"/>
+	<arg name="colors"/>
+	<arg name="parallel" value="8"/>
+	<arg name="extensions" value="php"/>
+
+	<!-- The WordPress standard (Extra = Core + best practices; Docs = inline docs). -->
+	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress-Docs"/>
+
+	<!--
+		Text domain + prefix enforcement: every i18n string must use this text
+		domain, and every global symbol must carry one of our prefixes. This is
+		what keeps the plugin from polluting the global namespace.
+	-->
+	<config name="text_domain" value="crypto-woocommerce"/>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="crypto-woocommerce"/>
+			</property>
+		</properties>
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="ShadowEth"/>
+				<element value="SHADOW_ETH"/>
+				<element value="shadow_eth"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Minimum supported versions (gates deprecations + back-compat). -->
+	<config name="minimum_wp_version" value="6.4"/>
+
+	<!--
+		PHP cross-version compatibility. testVersion is the SUPPORTED range, not
+		the dev host: the plugin header says "Requires PHP: 8.0", so we lint for
+		8.0 and up.
+	-->
+	<config name="testVersion" value="8.0-"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!--
+		The token-contract and address constants in Assets.php are 0x-prefixed
+		hex ADDRESS strings, not integer literals. The "hex numeric string"
+		compatibility sniff (a PHP 7 int-coercion warning) does not apply to them —
+		they are only ever compared as strings, never used as numbers — so it is
+		excluded for that file to avoid noise on legitimate constants.
+	-->
+	<rule ref="PHPCompatibility.Miscellaneous.ValidIntegers.HexNumericStringFound">
+		<exclude-pattern>*/includes/Assets.php</exclude-pattern>
+		<exclude-pattern>*/includes/Erc20.php</exclude-pattern>
+	</rule>
+
+	<!--
+		The plugin ships its own tiny PSR-4-ish autoloader (no Composer in the
+		distributed plugin), so class files are PascalCase, not the WP
+		hyphenated-lowercase convention. Allow PascalCase class filenames inside
+		includes/.
+	-->
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="strict_class_file_names" value="false"/>
+		</properties>
+		<exclude-pattern>*/includes/*</exclude-pattern>
+	</rule>
+</ruleset>

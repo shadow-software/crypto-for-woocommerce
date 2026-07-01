@@ -1,0 +1,28 @@
+# Composer / dev dependencies (the shipped plugin bundles nothing)
+/vendor/
+composer.phar
+
+# Node / build
+/node_modules/
+/build/
+/dist/
+*.zip
+
+# Test + tooling caches
+.phpunit.cache/
+.phpunit.result.cache
+.phpcs.cache
+phpcs.xml
+phpstan.neon.local
+.php-cs-fixer.cache
+
+# Logs
+*.log
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-*
+*~

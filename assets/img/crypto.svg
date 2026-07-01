@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-label="Crypto">
+  <circle cx="8" cy="12" r="7" fill="#8fd468"/>
+  <path d="M8 4.5 4.2 12 8 14.2 11.8 12z" fill="#0d0d0d" opacity="0.85"/>
+  <path d="M8 15.1 4.2 12.9 8 18.5l3.8-5.6z" fill="#0d0d0d" opacity="0.85"/>
+  <circle cx="16.5" cy="12" r="6.2" fill="#c9edb4"/>
+  <text x="16.5" y="15.4" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="8.5" font-weight="700" text-anchor="middle" fill="#0d0d0d">₿</text>
+</svg>
