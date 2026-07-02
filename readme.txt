@@ -1,4 +1,4 @@
-=== Shadowledger Crypto for WooCommerce ===
+=== Shadow Software Crypto for WooCommerce ===
 Contributors: shadowsoftware
 Donate link: https://shadowsoftware.com/
 Tags: woocommerce, crypto, bitcoin, ethereum, stablecoin
@@ -15,7 +15,7 @@ A simple, free, open-source plugin to confirm common blockchain transactions (US
 
 == Description ==
 
-Shadowledger Crypto for WooCommerce lets your store accept cryptocurrency straight to
+Shadow Software Crypto for WooCommerce lets your store accept cryptocurrency straight to
 your own wallets — no payment processor, no account, no fees, and no private keys
 on your server. You enter your own receiving addresses; customers pay them
 directly and the plugin watches the blockchain with free, public tools, only
@@ -75,7 +75,7 @@ irreversible, treat confirmed orders like cash.
 
 == Installation ==
 
-1. Upload the `shadowledger-crypto-for-woocommerce` folder to `/wp-content/plugins/`, or install
+1. Upload the `shadow-software-crypto-for-woocommerce` folder to `/wp-content/plugins/`, or install
    the ZIP via Plugins → Add New → Upload.
 2. Activate the plugin through the Plugins menu.
 3. Go to WooCommerce → Settings → Payments → **Crypto (self-custodial)**.

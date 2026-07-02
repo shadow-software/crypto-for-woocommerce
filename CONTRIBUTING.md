@@ -1,4 +1,4 @@
-# Contributing to Shadowledger Crypto for WooCommerce
+# Contributing to Shadow Software Crypto for WooCommerce
 
 Thanks for your interest in improving this plugin! It is free and open source,
 maintained by [Shadow Software](https://shadowsoftware.com/).

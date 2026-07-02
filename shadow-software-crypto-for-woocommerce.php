@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Shadowledger Crypto for WooCommerce
+ * Plugin Name:       Shadow Software Crypto for WooCommerce
  * Plugin URI:        https://github.com/shadow-software/crypto-woocommerce
  * Description:       A simple, free, open-source plugin to confirm common blockchain transactions (USDT/USDC/BTC/ETH) and mark orders paid in Woocommerce. Enter your own receiving addresses; customers pay them directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No middleman, no fees, no keys on your server.
  * Version:           1.0.0
@@ -11,7 +11,7 @@
  * Author URI:        https://shadowsoftware.com/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       shadowledger-crypto-for-woocommerce
+ * Text Domain:       shadow-software-crypto-for-woocommerce
  * Domain Path:       /languages
  *
  * WC requires at least: 8.2
@@ -114,7 +114,7 @@ add_action(
 				'admin_notices',
 				static function () {
 					echo '<div class="notice notice-error"><p>';
-					echo esc_html__( 'Shadowledger Crypto for WooCommerce requires WooCommerce to be installed and active.', 'shadowledger-crypto-for-woocommerce' );
+					echo esc_html__( 'Shadow Software Crypto for WooCommerce requires WooCommerce to be installed and active.', 'shadow-software-crypto-for-woocommerce' );
 					echo '</p></div>';
 				}
 			);

@@ -71,7 +71,7 @@ final class VerificationResult {
 	public static function confirmed( string $tx_hash, int $confirmations ): self {
 		return new self(
 			self::STATUS_CONFIRMED,
-			__( 'Payment confirmed on-chain.', 'shadowledger-crypto-for-woocommerce' ),
+			__( 'Payment confirmed on-chain.', 'shadow-software-crypto-for-woocommerce' ),
 			$tx_hash,
 			$confirmations
 		);
