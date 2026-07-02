@@ -1,0 +1,51 @@
+name: Update wp.org readme & assets
+
+# Updates the WordPress.org plugin page WITHOUT a version bump: it pushes the
+# current readme.txt to SVN trunk and syncs the .wordpress-org/ directory assets
+# (banners, icon, screenshots) to SVN assets/. Use this to fix a typo, tweak
+# screenshot captions, or refresh a banner between releases.
+#
+# It does NOT create or touch an SVN tag, so it is safe to run any time.
+#
+# Trigger: run by hand from the Actions tab (workflow_dispatch), or automatically
+# when readme.txt or the .wordpress-org/ assets change on the default branch.
+#
+# Requires the same secrets as the deploy workflow:
+#   SVN_USERNAME, SVN_PASSWORD
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths:
+      - 'readme.txt'
+      - '.wordpress-org/**'
+
+permissions:
+  contents: read
+
+jobs:
+  assets:
+    name: Sync readme + assets to WordPress.org
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Guard — require WordPress.org credentials
+        id: guard
+        run: |
+          if [ -z "${{ secrets.SVN_USERNAME }}" ] || [ -z "${{ secrets.SVN_PASSWORD }}" ]; then
+            echo "WordPress.org SVN credentials are not configured; skipping."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update readme + assets on WordPress.org
+        if: steps.guard.outputs.ready == 'true'
+        uses: 10up/action-wordpress-plugin-asset-update@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: shadow-software-crypto-for-woocommerce
+          ASSETS_DIR: .wordpress-org
