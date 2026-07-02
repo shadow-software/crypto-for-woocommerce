@@ -72,17 +72,17 @@ final class BtcVerifier {
 		$sender      = OrderMeta::get_string( $this->order, OrderMeta::SENDER );
 
 		if ( '' === $pay_address || ! BtcAddress::is_valid( $pay_address ) ) {
-			return VerificationResult::failed( __( 'This payment is missing its Bitcoin address.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'This payment is missing its Bitcoin address.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		if ( '0' === $min_sats ) {
 			Logger::error( 'BTC order ' . $this->order->get_id() . ' has no locked amount; refusing to verify.' );
 
-			return VerificationResult::failed( __( 'This order is missing its payment amount. Please contact us to complete it.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'This order is missing its payment amount. Please contact us to complete it.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		if ( '' === $sender ) {
-			return VerificationResult::failed( __( 'We need the wallet address you paid from to confirm this payment.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'We need the wallet address you paid from to confirm this payment.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		try {
@@ -94,7 +94,7 @@ final class BtcVerifier {
 		} catch ( RpcException $e ) {
 			Logger::warn( 'BTC verify error for order ' . $this->order->get_id() . ': ' . $e->getMessage() );
 
-			return VerificationResult::pending( __( 'Checking the Bitcoin network… we could not reach an explorer just now and will retry shortly.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Checking the Bitcoin network… we could not reach an explorer just now and will retry shortly.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 	}
 
@@ -109,13 +109,13 @@ final class BtcVerifier {
 	 */
 	private function verify_by_txid( string $txid, string $pay_address, string $sender, string $min_sats ): VerificationResult {
 		if ( ! TxRegistry::is_available_for( self::NETWORK, $txid, $this->order->get_id() ) ) {
-			return VerificationResult::failed( __( 'That transaction has already been used to pay another order. Please make a new payment for this order.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'That transaction has already been used to pay another order. Please make a new payment for this order.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		$tx = $this->explorer->get_tx( $txid );
 
 		if ( null === $tx ) {
-			return VerificationResult::pending( __( 'Your transaction has not appeared on the network yet. This can take a moment after you send it.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Your transaction has not appeared on the network yet. This can take a moment after you send it.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		return $this->evaluate_tx( $tx, $txid, $pay_address, $sender, $min_sats );
@@ -154,7 +154,7 @@ final class BtcVerifier {
 			}
 		}
 
-		return VerificationResult::pending( __( 'Looking for your payment on the Bitcoin network. If you have paid, this usually clears within a few minutes.', 'accept-crypto-for-woocommerce' ) );
+		return VerificationResult::pending( __( 'Looking for your payment on the Bitcoin network. If you have paid, this usually clears within a few minutes.', 'shadowpay-crypto-for-woocommerce' ) );
 	}
 
 	/**
@@ -188,19 +188,19 @@ final class BtcVerifier {
 		}
 
 		if ( '0' === $paid_sats ) {
-			return VerificationResult::failed( __( 'That transaction did not pay the store address. Please check and try again.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'That transaction did not pay the store address. Please check and try again.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		// The buyer's address must appear among the inputs (binds it to this buyer).
 		if ( ! $this->inputs_include( $tx, $sender ) ) {
-			return VerificationResult::failed( __( 'That transaction was not sent from the wallet you entered. Please check and try again.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'That transaction was not sent from the wallet you entered. Please check and try again.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		if ( Money::compare( $paid_sats, $min_sats ) < 0 ) {
 			return VerificationResult::failed(
 				sprintf(
 					/* translators: 1: amount paid in BTC, 2: amount required in BTC. */
-					__( 'That payment was for %1$s BTC but %2$s BTC is required. If you underpaid, please send the difference in a new transaction.', 'accept-crypto-for-woocommerce' ),
+					__( 'That payment was for %1$s BTC but %2$s BTC is required. If you underpaid, please send the difference in a new transaction.', 'shadowpay-crypto-for-woocommerce' ),
 					Money::from_base_units( $paid_sats, 8 ),
 					Money::from_base_units( $min_sats, 8 )
 				)
@@ -212,13 +212,13 @@ final class BtcVerifier {
 		$confirmed = isset( $status['confirmed'] ) && true === $status['confirmed'];
 
 		if ( ! $confirmed ) {
-			return VerificationResult::pending( __( 'Payment found — waiting for it to be included in a block.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Payment found — waiting for it to be included in a block.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		$block_height = isset( $status['block_height'] ) ? (int) $status['block_height'] : 0;
 
 		if ( $block_height <= 0 ) {
-			return VerificationResult::pending( __( 'Payment found — confirming. Please wait a moment.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Payment found — confirming. Please wait a moment.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		// Reject a payment that was already confirmed BEFORE this order existed. A
@@ -230,7 +230,7 @@ final class BtcVerifier {
 		$start_height = OrderMeta::get_int( $this->order, OrderMeta::START_BLOCK );
 
 		if ( $start_height > 0 && $block_height < $start_height ) {
-			return VerificationResult::failed( __( 'That transaction was confirmed before this order was placed, so it cannot pay for it. Please make a new payment.', 'accept-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'That transaction was confirmed before this order was placed, so it cannot pay for it. Please make a new payment.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		$tip      = $this->explorer->tip_height();
@@ -241,7 +241,7 @@ final class BtcVerifier {
 			return VerificationResult::pending(
 				sprintf(
 					/* translators: 1: current confirmations, 2: required confirmations. */
-					__( 'Payment found — waiting for network confirmations (%1$d of %2$d).', 'accept-crypto-for-woocommerce' ),
+					__( 'Payment found — waiting for network confirmations (%1$d of %2$d).', 'shadowpay-crypto-for-woocommerce' ),
 					$confs,
 					$required
 				),

@@ -44,5 +44,5 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: accept-crypto-for-woocommerce
+          SLUG: shadowpay-crypto-for-woocommerce
           ASSETS_DIR: .wordpress-org

@@ -40,8 +40,8 @@ final class Gateway extends \WC_Payment_Gateway {
 	 */
 	public function __construct() {
 		$this->id                 = SHADOW_ETH_GATEWAY_ID;
-		$this->method_title       = __( 'Crypto (self-custodial)', 'accept-crypto-for-woocommerce' );
-		$this->method_description = __( 'Confirm common blockchain transactions (USDT, USDC, BTC and ETH) and mark orders paid — straight to your own wallets. The order total is converted at the live rate; the buyer pays your address directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No custody, no fees, no keys on your server.', 'accept-crypto-for-woocommerce' );
+		$this->method_title       = __( 'Crypto (self-custodial)', 'shadowpay-crypto-for-woocommerce' );
+		$this->method_description = __( 'Confirm common blockchain transactions (USDT, USDC, BTC and ETH) and mark orders paid — straight to your own wallets. The order total is converted at the live rate; the buyer pays your address directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No custody, no fees, no keys on your server.', 'shadowpay-crypto-for-woocommerce' );
 		$this->has_fields         = false;
 		$this->supports           = array( 'products' );
 		$this->icon               = SHADOW_ETH_URL . 'assets/img/crypto.svg';
@@ -49,8 +49,8 @@ final class Gateway extends \WC_Payment_Gateway {
 		$this->init_form_fields();
 		$this->init_settings();
 
-		$this->title       = $this->get_option( 'title', __( 'Pay with crypto (ETH, USDC, USDT, BTC)', 'accept-crypto-for-woocommerce' ) );
-		$this->description = $this->get_option( 'description', __( 'Pay in crypto from your own wallet. After you place the order we show the exact amount and address to pay.', 'accept-crypto-for-woocommerce' ) );
+		$this->title       = $this->get_option( 'title', __( 'Pay with crypto (ETH, USDC, USDT, BTC)', 'shadowpay-crypto-for-woocommerce' ) );
+		$this->description = $this->get_option( 'description', __( 'Pay in crypto from your own wallet. After you place the order we show the exact amount and address to pay.', 'shadowpay-crypto-for-woocommerce' ) );
 		$this->enabled     = $this->get_option( 'enabled', 'no' );
 
 		add_action(
@@ -69,33 +69,33 @@ final class Gateway extends \WC_Payment_Gateway {
 	public function init_form_fields(): void {
 		$fields = array(
 			'enabled'           => array(
-				'title'   => __( 'Enable/Disable', 'accept-crypto-for-woocommerce' ),
+				'title'   => __( 'Enable/Disable', 'shadowpay-crypto-for-woocommerce' ),
 				'type'    => 'checkbox',
-				'label'   => __( 'Enable crypto payments', 'accept-crypto-for-woocommerce' ),
+				'label'   => __( 'Enable crypto payments', 'shadowpay-crypto-for-woocommerce' ),
 				'default' => 'no',
 			),
 			'title'             => array(
-				'title'       => __( 'Title', 'accept-crypto-for-woocommerce' ),
+				'title'       => __( 'Title', 'shadowpay-crypto-for-woocommerce' ),
 				'type'        => 'text',
-				'description' => __( 'Payment method title shown to the customer at checkout.', 'accept-crypto-for-woocommerce' ),
-				'default'     => __( 'Pay with crypto (ETH, USDC, USDT, BTC)', 'accept-crypto-for-woocommerce' ),
+				'description' => __( 'Payment method title shown to the customer at checkout.', 'shadowpay-crypto-for-woocommerce' ),
+				'default'     => __( 'Pay with crypto (ETH, USDC, USDT, BTC)', 'shadowpay-crypto-for-woocommerce' ),
 				'desc_tip'    => true,
 			),
 			'description'       => array(
-				'title'       => __( 'Description', 'accept-crypto-for-woocommerce' ),
+				'title'       => __( 'Description', 'shadowpay-crypto-for-woocommerce' ),
 				'type'        => 'textarea',
-				'description' => __( 'Payment method description shown to the customer at checkout.', 'accept-crypto-for-woocommerce' ),
-				'default'     => __( 'Pay in crypto from your own wallet. After you place the order we show the exact amount and address to pay.', 'accept-crypto-for-woocommerce' ),
+				'description' => __( 'Payment method description shown to the customer at checkout.', 'shadowpay-crypto-for-woocommerce' ),
+				'default'     => __( 'Pay in crypto from your own wallet. After you place the order we show the exact amount and address to pay.', 'shadowpay-crypto-for-woocommerce' ),
 			),
 			'wallet'            => array(
-				'title'       => __( 'Ethereum & tokens — receiving wallet', 'accept-crypto-for-woocommerce' ),
+				'title'       => __( 'Ethereum & tokens — receiving wallet', 'shadowpay-crypto-for-woocommerce' ),
 				'type'        => 'title',
-				'description' => __( 'The 0x… address every EVM customer pays (ETH, USDC and USDT all arrive at this one address on whichever network the buyer chooses). Use an address you control. Double-check it — funds are sent by customers directly and cannot be recovered by this plugin.', 'accept-crypto-for-woocommerce' ),
+				'description' => __( 'The 0x… address every EVM customer pays (ETH, USDC and USDT all arrive at this one address on whichever network the buyer chooses). Use an address you control. Double-check it — funds are sent by customers directly and cannot be recovered by this plugin.', 'shadowpay-crypto-for-woocommerce' ),
 			),
 			'receiving_address' => array(
-				'title'             => __( 'EVM receiving address (0x…)', 'accept-crypto-for-woocommerce' ),
+				'title'             => __( 'EVM receiving address (0x…)', 'shadowpay-crypto-for-woocommerce' ),
 				'type'              => 'text',
-				'description'       => __( 'Your 0x… address. If you paste a checksummed (mixed-case) address it is verified; a typo will be rejected on save. Leave blank to disable ETH/USDC/USDT.', 'accept-crypto-for-woocommerce' ),
+				'description'       => __( 'Your 0x… address. If you paste a checksummed (mixed-case) address it is verified; a typo will be rejected on save. Leave blank to disable ETH/USDC/USDT.', 'shadowpay-crypto-for-woocommerce' ),
 				'default'           => '',
 				'placeholder'       => '0xYourWalletAddress…',
 				'desc_tip'          => false,
@@ -106,9 +106,9 @@ final class Gateway extends \WC_Payment_Gateway {
 				),
 			),
 			'networks_title'    => array(
-				'title'       => __( 'Networks & assets', 'accept-crypto-for-woocommerce' ),
+				'title'       => __( 'Networks & assets', 'shadowpay-crypto-for-woocommerce' ),
 				'type'        => 'title',
-				'description' => __( 'Choose which networks customers may pay on, and which assets (ETH / USDC / USDT) to accept on each. All use free public nodes by default; you can point any network at your own RPC endpoint below.', 'accept-crypto-for-woocommerce' ),
+				'description' => __( 'Choose which networks customers may pay on, and which assets (ETH / USDC / USDT) to accept on each. All use free public nodes by default; you can point any network at your own RPC endpoint below.', 'shadowpay-crypto-for-woocommerce' ),
 			),
 		);
 
@@ -118,7 +118,7 @@ final class Gateway extends \WC_Payment_Gateway {
 				'title'   => $network['name'],
 				'type'    => 'checkbox',
 				/* translators: %s: network name. */
-				'label'   => sprintf( __( 'Accept payments on %s', 'accept-crypto-for-woocommerce' ), $network['name'] ),
+				'label'   => sprintf( __( 'Accept payments on %s', 'shadowpay-crypto-for-woocommerce' ), $network['name'] ),
 				'default' => 'ethereum' === $slug ? 'yes' : 'no',
 			);
 
@@ -126,9 +126,9 @@ final class Gateway extends \WC_Payment_Gateway {
 			// tokens that exist on this chain get their own checkbox).
 			$fields[ 'asset_eth:' . $slug . '_enabled' ] = array(
 				/* translators: %s: network name. */
-				'title'   => sprintf( __( '%s — assets', 'accept-crypto-for-woocommerce' ), $network['name'] ),
+				'title'   => sprintf( __( '%s — assets', 'shadowpay-crypto-for-woocommerce' ), $network['name'] ),
 				'type'    => 'checkbox',
-				'label'   => __( 'ETH (native)', 'accept-crypto-for-woocommerce' ),
+				'label'   => __( 'ETH (native)', 'shadowpay-crypto-for-woocommerce' ),
 				'default' => 'yes',
 			);
 			foreach ( Assets::all() as $asset ) {
@@ -139,16 +139,16 @@ final class Gateway extends \WC_Payment_Gateway {
 					'title'   => '',
 					'type'    => 'checkbox',
 					/* translators: %s: token symbol. */
-					'label'   => sprintf( __( '%s (token)', 'accept-crypto-for-woocommerce' ), $asset['symbol'] ),
+					'label'   => sprintf( __( '%s (token)', 'shadowpay-crypto-for-woocommerce' ), $asset['symbol'] ),
 					'default' => 'yes',
 				);
 			}
 
 			$fields[ 'network_' . $slug . '_confirmations' ] = array(
 				/* translators: %s: network name. */
-				'title'             => sprintf( __( '%s — confirmations', 'accept-crypto-for-woocommerce' ), $network['name'] ),
+				'title'             => sprintf( __( '%s — confirmations', 'shadowpay-crypto-for-woocommerce' ), $network['name'] ),
 				'type'              => 'number',
-				'description'       => __( 'Block confirmations required before the order is completed. Higher is safer but slower.', 'accept-crypto-for-woocommerce' ),
+				'description'       => __( 'Block confirmations required before the order is completed. Higher is safer but slower.', 'shadowpay-crypto-for-woocommerce' ),
 				'default'           => (string) $network['default_confirmations'],
 				'desc_tip'          => true,
 				'custom_attributes' => array(
@@ -159,10 +159,10 @@ final class Gateway extends \WC_Payment_Gateway {
 			);
 			$fields[ 'network_' . $slug . '_rpc' ]           = array(
 				/* translators: %s: network name. */
-				'title'       => sprintf( __( '%s — custom RPC URL', 'accept-crypto-for-woocommerce' ), $network['name'] ),
+				'title'       => sprintf( __( '%s — custom RPC URL', 'shadowpay-crypto-for-woocommerce' ), $network['name'] ),
 				'type'        => 'text',
 				/* translators: %s: the default public RPC URL for the network. */
-				'description' => sprintf( __( 'Optional. Leave blank to use the free public node (%s).', 'accept-crypto-for-woocommerce' ), $network['default_rpc'] ),
+				'description' => sprintf( __( 'Optional. Leave blank to use the free public node (%s).', 'shadowpay-crypto-for-woocommerce' ), $network['default_rpc'] ),
 				'default'     => '',
 				'placeholder' => $network['default_rpc'],
 				'desc_tip'    => true,
@@ -171,20 +171,20 @@ final class Gateway extends \WC_Payment_Gateway {
 
 		// Bitcoin section.
 		$fields['btc_title']         = array(
-			'title'       => __( 'Bitcoin', 'accept-crypto-for-woocommerce' ),
+			'title'       => __( 'Bitcoin', 'shadowpay-crypto-for-woocommerce' ),
 			'type'        => 'title',
-			'description' => __( 'Accept native BTC to your own Bitcoin address, confirmed via free public block explorers. Leave the address blank to disable Bitcoin.', 'accept-crypto-for-woocommerce' ),
+			'description' => __( 'Accept native BTC to your own Bitcoin address, confirmed via free public block explorers. Leave the address blank to disable Bitcoin.', 'shadowpay-crypto-for-woocommerce' ),
 		);
 		$fields['btc_enabled']       = array(
-			'title'   => __( 'Bitcoin', 'accept-crypto-for-woocommerce' ),
+			'title'   => __( 'Bitcoin', 'shadowpay-crypto-for-woocommerce' ),
 			'type'    => 'checkbox',
-			'label'   => __( 'Accept native Bitcoin (BTC)', 'accept-crypto-for-woocommerce' ),
+			'label'   => __( 'Accept native Bitcoin (BTC)', 'shadowpay-crypto-for-woocommerce' ),
 			'default' => 'no',
 		);
 		$fields['btc_address']       = array(
-			'title'             => __( 'BTC receiving address', 'accept-crypto-for-woocommerce' ),
+			'title'             => __( 'BTC receiving address', 'shadowpay-crypto-for-woocommerce' ),
 			'type'              => 'text',
-			'description'       => __( 'Your Bitcoin mainnet address (bc1…, 1… or 3…). The checksum is verified on save; a typo will be rejected.', 'accept-crypto-for-woocommerce' ),
+			'description'       => __( 'Your Bitcoin mainnet address (bc1…, 1… or 3…). The checksum is verified on save; a typo will be rejected.', 'shadowpay-crypto-for-woocommerce' ),
 			'default'           => '',
 			'placeholder'       => 'bc1…',
 			'custom_attributes' => array(
@@ -194,9 +194,9 @@ final class Gateway extends \WC_Payment_Gateway {
 			),
 		);
 		$fields['btc_confirmations'] = array(
-			'title'             => __( 'Bitcoin — confirmations', 'accept-crypto-for-woocommerce' ),
+			'title'             => __( 'Bitcoin — confirmations', 'shadowpay-crypto-for-woocommerce' ),
 			'type'              => 'number',
-			'description'       => __( 'Confirmations required before a Bitcoin order is completed. 1–2 is common for small amounts; more is safer.', 'accept-crypto-for-woocommerce' ),
+			'description'       => __( 'Confirmations required before a Bitcoin order is completed. 1–2 is common for small amounts; more is safer.', 'shadowpay-crypto-for-woocommerce' ),
 			'default'           => '2',
 			'desc_tip'          => true,
 			'custom_attributes' => array(
@@ -206,23 +206,23 @@ final class Gateway extends \WC_Payment_Gateway {
 			),
 		);
 		$fields['btc_explorer']      = array(
-			'title'       => __( 'Bitcoin — custom explorer URL', 'accept-crypto-for-woocommerce' ),
+			'title'       => __( 'Bitcoin — custom explorer URL', 'shadowpay-crypto-for-woocommerce' ),
 			'type'        => 'text',
-			'description' => __( 'Optional. An Esplora-compatible API base URL (e.g. your own mempool instance). Leave blank to use the free mempool.space and blockstream.info explorers.', 'accept-crypto-for-woocommerce' ),
+			'description' => __( 'Optional. An Esplora-compatible API base URL (e.g. your own mempool instance). Leave blank to use the free mempool.space and blockstream.info explorers.', 'shadowpay-crypto-for-woocommerce' ),
 			'default'     => '',
 			'placeholder' => 'https://mempool.space/api',
 			'desc_tip'    => true,
 		);
 
 		$fields['pricing_title']  = array(
-			'title'       => __( 'Pricing & tolerance', 'accept-crypto-for-woocommerce' ),
+			'title'       => __( 'Pricing & tolerance', 'shadowpay-crypto-for-woocommerce' ),
 			'type'        => 'title',
-			'description' => __( 'The order total is converted from your store currency to the chosen crypto at the live market rate when the buyer picks how to pay, and that amount is locked for them.', 'accept-crypto-for-woocommerce' ),
+			'description' => __( 'The order total is converted from your store currency to the chosen crypto at the live market rate when the buyer picks how to pay, and that amount is locked for them.', 'shadowpay-crypto-for-woocommerce' ),
 		);
 		$fields['tolerance_bps']  = array(
-			'title'             => __( 'Underpayment tolerance (%)', 'accept-crypto-for-woocommerce' ),
+			'title'             => __( 'Underpayment tolerance (%)', 'shadowpay-crypto-for-woocommerce' ),
 			'type'              => 'number',
-			'description'       => __( 'Accept a payment this many percent below the quoted amount, to absorb rate drift and rounding. 0 requires the exact amount or more.', 'accept-crypto-for-woocommerce' ),
+			'description'       => __( 'Accept a payment this many percent below the quoted amount, to absorb rate drift and rounding. 0 requires the exact amount or more.', 'shadowpay-crypto-for-woocommerce' ),
 			'default'           => '1',
 			'desc_tip'          => true,
 			'custom_attributes' => array(
@@ -232,9 +232,9 @@ final class Gateway extends \WC_Payment_Gateway {
 			),
 		);
 		$fields['window_minutes'] = array(
-			'title'             => __( 'Payment window (minutes)', 'accept-crypto-for-woocommerce' ),
+			'title'             => __( 'Payment window (minutes)', 'shadowpay-crypto-for-woocommerce' ),
 			'type'              => 'number',
-			'description'       => __( 'How long to keep polling the chain for a submitted payment before the order is marked failed.', 'accept-crypto-for-woocommerce' ),
+			'description'       => __( 'How long to keep polling the chain for a submitted payment before the order is marked failed.', 'shadowpay-crypto-for-woocommerce' ),
 			'default'           => '60',
 			'desc_tip'          => true,
 			'custom_attributes' => array(
@@ -264,13 +264,13 @@ final class Gateway extends \WC_Payment_Gateway {
 		}
 
 		if ( ! Address::is_valid_format( $value ) ) {
-			\WC_Admin_Settings::add_error( __( 'The EVM receiving address is not a valid 0x… address. It was not saved.', 'accept-crypto-for-woocommerce' ) );
+			\WC_Admin_Settings::add_error( __( 'The EVM receiving address is not a valid 0x… address. It was not saved.', 'shadowpay-crypto-for-woocommerce' ) );
 
 			return (string) $this->get_option( $key, '' );
 		}
 
 		if ( ! Address::is_valid_checksum( $value ) ) {
-			\WC_Admin_Settings::add_error( __( 'The EVM receiving address has an invalid checksum (likely a typo). It was not saved.', 'accept-crypto-for-woocommerce' ) );
+			\WC_Admin_Settings::add_error( __( 'The EVM receiving address has an invalid checksum (likely a typo). It was not saved.', 'shadowpay-crypto-for-woocommerce' ) );
 
 			return (string) $this->get_option( $key, '' );
 		}
@@ -294,7 +294,7 @@ final class Gateway extends \WC_Payment_Gateway {
 		}
 
 		if ( ! BtcAddress::is_valid( $value ) ) {
-			\WC_Admin_Settings::add_error( __( 'The Bitcoin receiving address is not a valid mainnet address (bc1…, 1… or 3…). It was not saved.', 'accept-crypto-for-woocommerce' ) );
+			\WC_Admin_Settings::add_error( __( 'The Bitcoin receiving address is not a valid mainnet address (bc1…, 1… or 3…). It was not saved.', 'shadowpay-crypto-for-woocommerce' ) );
 
 			return (string) $this->get_option( $key, '' );
 		}
@@ -337,35 +337,35 @@ final class Gateway extends \WC_Payment_Gateway {
 				<div class="shadow-eth-admin__titles">
 					<p class="shadow-eth-admin__wordmark">Accept <span>Crypto</span></p>
 					<p class="shadow-eth-admin__tagline">
-						<?php esc_html_e( 'Self-custodial crypto checkout — ETH, USDC, USDT & BTC — free and open, by Shadow Software LLC.', 'accept-crypto-for-woocommerce' ); ?>
+						<?php esc_html_e( 'Self-custodial crypto checkout — ETH, USDC, USDT & BTC — free and open, by Shadow Software LLC.', 'shadowpay-crypto-for-woocommerce' ); ?>
 					</p>
 				</div>
 			</div>
 			<div class="shadow-eth-admin__pills">
-				<span class="shadow-eth-admin__pill"><?php esc_html_e( 'Your wallet, your keys', 'accept-crypto-for-woocommerce' ); ?></span>
-				<span class="shadow-eth-admin__pill"><?php esc_html_e( 'On-chain verified', 'accept-crypto-for-woocommerce' ); ?></span>
-				<span class="shadow-eth-admin__pill shadow-eth-admin__pill--neutral"><?php esc_html_e( 'Free public nodes', 'accept-crypto-for-woocommerce' ); ?></span>
-				<span class="shadow-eth-admin__pill shadow-eth-admin__pill--neutral"><?php esc_html_e( 'No fees · No middleman', 'accept-crypto-for-woocommerce' ); ?></span>
+				<span class="shadow-eth-admin__pill"><?php esc_html_e( 'Your wallet, your keys', 'shadowpay-crypto-for-woocommerce' ); ?></span>
+				<span class="shadow-eth-admin__pill"><?php esc_html_e( 'On-chain verified', 'shadowpay-crypto-for-woocommerce' ); ?></span>
+				<span class="shadow-eth-admin__pill shadow-eth-admin__pill--neutral"><?php esc_html_e( 'Free public nodes', 'shadowpay-crypto-for-woocommerce' ); ?></span>
+				<span class="shadow-eth-admin__pill shadow-eth-admin__pill--neutral"><?php esc_html_e( 'No fees · No middleman', 'shadowpay-crypto-for-woocommerce' ); ?></span>
 			</div>
 			<p class="shadow-eth-admin__notice">
-				<?php esc_html_e( 'Payments are sent by customers directly to your wallet and settle on a public blockchain. On-chain payments are irreversible and cannot be refunded or recovered by this plugin — treat a confirmed order like cash, and always confirm your receiving address is correct.', 'accept-crypto-for-woocommerce' ); ?>
+				<?php esc_html_e( 'Payments are sent by customers directly to your wallet and settle on a public blockchain. On-chain payments are irreversible and cannot be refunded or recovered by this plugin — treat a confirmed order like cash, and always confirm your receiving address is correct.', 'shadowpay-crypto-for-woocommerce' ); ?>
 			</p>
 			<div class="shadow-eth-admin__meta">
 				<span class="shadow-eth-admin__version">
 					<?php
 					/* translators: %s: the installed plugin version. */
-					echo esc_html( sprintf( __( 'Version %s', 'accept-crypto-for-woocommerce' ), SHADOW_ETH_VERSION ) );
+					echo esc_html( sprintf( __( 'Version %s', 'shadowpay-crypto-for-woocommerce' ), SHADOW_ETH_VERSION ) );
 					?>
 				</span>
 				<span class="sh-sep" aria-hidden="true">·</span>
-				<a href="<?php echo esc_url( self::SUPPORT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Documentation', 'accept-crypto-for-woocommerce' ); ?></a>
-				<a href="<?php echo esc_url( self::SUPPORT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Support', 'accept-crypto-for-woocommerce' ); ?></a>
+				<a href="<?php echo esc_url( self::SUPPORT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Documentation', 'shadowpay-crypto-for-woocommerce' ); ?></a>
+				<a href="<?php echo esc_url( self::SUPPORT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Support', 'shadowpay-crypto-for-woocommerce' ); ?></a>
 				<span class="sh-sep" aria-hidden="true">·</span>
 				<span class="shadow-eth-admin__by">
 					<?php
 					printf(
 						/* translators: %s: the plugin author, linked. */
-						esc_html__( 'by %s', 'accept-crypto-for-woocommerce' ),
+						esc_html__( 'by %s', 'shadowpay-crypto-for-woocommerce' ),
 						'<a href="' . esc_url( $services ) . '" target="_blank" rel="noopener noreferrer">Shadow Software</a>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- URL escaped inline; author name is a fixed literal.
 					);
 					?>
@@ -588,11 +588,11 @@ final class Gateway extends \WC_Payment_Gateway {
 		$order = wc_get_order( $order_id );
 
 		if ( ! $order instanceof \WC_Order ) {
-			return $this->fail( __( 'Order not found.', 'accept-crypto-for-woocommerce' ) );
+			return $this->fail( __( 'Order not found.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		if ( empty( $this->get_enabled_assets() ) ) {
-			return $this->fail( __( 'This store has not finished setting up crypto payments. Please choose another method.', 'accept-crypto-for-woocommerce' ) );
+			return $this->fail( __( 'This store has not finished setting up crypto payments. Please choose another method.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		// The buyer chooses which asset (and network) to pay in on the order-pay
@@ -603,7 +603,7 @@ final class Gateway extends \WC_Payment_Gateway {
 		if ( $order->has_status( array( 'pending', 'failed' ) ) ) {
 			$order->update_status(
 				'pending',
-				__( 'Awaiting crypto payment. Buyer will choose an asset and pay on the order page.', 'accept-crypto-for-woocommerce' )
+				__( 'Awaiting crypto payment. Buyer will choose an asset and pay on the order page.', 'shadowpay-crypto-for-woocommerce' )
 			);
 		}
 
@@ -634,22 +634,22 @@ final class Gateway extends \WC_Payment_Gateway {
 		$asset = Assets::get( $asset_id );
 
 		if ( null === $asset || ! $this->is_asset_enabled( $asset_id ) ) {
-			return __( 'Please choose a valid payment option.', 'accept-crypto-for-woocommerce' );
+			return __( 'Please choose a valid payment option.', 'shadowpay-crypto-for-woocommerce' );
 		}
 
 		$address = $this->get_asset_receiving_address( $asset );
 
 		if ( '' === $address ) {
-			return __( 'This payment option is not available right now. Please choose another.', 'accept-crypto-for-woocommerce' );
+			return __( 'This payment option is not available right now. Please choose another.', 'shadowpay-crypto-for-woocommerce' );
 		}
 
 		$currency = $order->get_currency();
 		$units    = RateProvider::fiat_to_base_units( (string) $order->get_total(), $currency, $asset['coingecko_id'], $asset['decimals'] );
 
 		if ( null === $units || '0' === $units ) {
-			$order->add_order_note( __( 'Accept Crypto: could not fetch the live exchange rate to price this order.', 'accept-crypto-for-woocommerce' ) );
+			$order->add_order_note( __( 'Accept Crypto: could not fetch the live exchange rate to price this order.', 'shadowpay-crypto-for-woocommerce' ) );
 
-			return __( 'We could not fetch the live exchange rate. Please try again in a moment or choose another option.', 'accept-crypto-for-woocommerce' );
+			return __( 'We could not fetch the live exchange rate. Please try again in a moment or choose another option.', 'shadowpay-crypto-for-woocommerce' );
 		}
 
 		$rate   = RateProvider::asset_price( $asset['coingecko_id'], $currency );
@@ -662,7 +662,7 @@ final class Gateway extends \WC_Payment_Gateway {
 		if ( Money::compare( $units, $quoted ) < 0 ) {
 			Logger::error( 'Salted amount fell below the quoted amount for order ' . $order->get_id() . '; refusing to lock.' );
 
-			return __( 'We could not price this order correctly. Please try again or choose another option.', 'accept-crypto-for-woocommerce' );
+			return __( 'We could not price this order correctly. Please try again or choose another option.', 'shadowpay-crypto-for-woocommerce' );
 		}
 
 		$order->update_meta_data( OrderMeta::ASSET, $asset_id );

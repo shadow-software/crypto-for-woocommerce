@@ -1,8 +1,8 @@
 <p align="center">
-  <img src=".github/assets/logo.svg" alt="Accept Crypto for WooCommerce — by Shadow Software" width="880">
+  <img src=".github/assets/logo.svg" alt="ShadowPay Crypto for WooCommerce — by Shadow Software" width="880">
 </p>
 
-<h1 align="center">Accept Crypto for WooCommerce</h1>
+<h1 align="center">ShadowPay Crypto for WooCommerce</h1>
 
 <p align="center">
   <strong>A simple, free, open-source plugin to confirm common blockchain transactions

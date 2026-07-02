@@ -77,7 +77,7 @@ final class BtcExplorer {
 		$body = $this->get( '/blocks/tip/height' );
 
 		if ( 1 !== preg_match( '/^\d+$/', trim( $body ) ) ) {
-			throw new RpcException( esc_html__( 'Invalid tip height from the Bitcoin explorer.', 'accept-crypto-for-woocommerce' ) );
+			throw new RpcException( esc_html__( 'Invalid tip height from the Bitcoin explorer.', 'shadowpay-crypto-for-woocommerce' ) );
 		}
 
 		return (int) trim( $body );
@@ -211,7 +211,7 @@ final class BtcExplorer {
 				'redirection'        => 2,
 				'reject_unsafe_urls' => true,
 				'headers'            => array( 'Accept' => 'application/json' ),
-				'user-agent'         => 'accept-crypto-for-woocommerce/' . SHADOW_ETH_VERSION . '; ' . home_url(),
+				'user-agent'         => 'shadowpay-crypto-for-woocommerce/' . SHADOW_ETH_VERSION . '; ' . home_url(),
 			)
 		);
 	}

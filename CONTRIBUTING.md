@@ -1,4 +1,4 @@
-# Contributing to Accept Crypto for WooCommerce
+# Contributing to ShadowPay Crypto for WooCommerce
 
 Thanks for your interest in improving this plugin! It is free and open source,
 maintained by [Shadow Software](https://shadowsoftware.com/).
