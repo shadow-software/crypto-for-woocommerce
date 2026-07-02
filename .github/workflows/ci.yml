@@ -100,15 +100,15 @@ jobs:
 
       - name: Build the release layout (export-ignore applied, nested under slug)
         run: |
-          git archive --format=tar --prefix=shadowpay-crypto-for-woocommerce/ HEAD \
+          git archive --format=tar --prefix=shadowchain-crypto-for-woocommerce/ HEAD \
             | tar -x -C "${{ runner.temp }}"
-          echo "PLUGIN_DIR=${{ runner.temp }}/shadowpay-crypto-for-woocommerce" >> "$GITHUB_ENV"
+          echo "PLUGIN_DIR=${{ runner.temp }}/shadowchain-crypto-for-woocommerce" >> "$GITHUB_ENV"
 
       - name: Run Plugin Check
         uses: wordpress/plugin-check-action@v1
         with:
           build-dir: ${{ env.PLUGIN_DIR }}
-          slug: shadowpay-crypto-for-woocommerce
+          slug: shadowchain-crypto-for-woocommerce
           severity: 0
           include-experimental: true
           include-low-severity-errors: true

@@ -137,8 +137,8 @@ final class PayPage {
 
 		?>
 		<div class="shadow-eth-pay" id="shadow-eth-pay">
-			<h2 class="shadow-eth-pay__heading"><?php esc_html_e( 'Choose how to pay', 'shadowpay-crypto-for-woocommerce' ); ?></h2>
-			<p class="shadow-eth-pay__form-intro"><?php esc_html_e( 'Pick the cryptocurrency and network you would like to pay with. We will then show the exact amount and address.', 'shadowpay-crypto-for-woocommerce' ); ?></p>
+			<h2 class="shadow-eth-pay__heading"><?php esc_html_e( 'Choose how to pay', 'shadowchain-crypto-for-woocommerce' ); ?></h2>
+			<p class="shadow-eth-pay__form-intro"><?php esc_html_e( 'Pick the cryptocurrency and network you would like to pay with. We will then show the exact amount and address.', 'shadowchain-crypto-for-woocommerce' ); ?></p>
 
 			<form class="shadow-eth-pay__form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 				<input type="hidden" name="action" value="<?php echo esc_attr( self::CHOOSE_ACTION ); ?>">
@@ -147,7 +147,7 @@ final class PayPage {
 				<?php wp_nonce_field( $this->choose_nonce_action( $order ), 'shadow_eth_nonce' ); ?>
 
 				<div class="shadow-eth-pay__field">
-					<label for="shadow-eth-asset"><?php esc_html_e( 'Pay with', 'shadowpay-crypto-for-woocommerce' ); ?></label>
+					<label for="shadow-eth-asset"><?php esc_html_e( 'Pay with', 'shadowchain-crypto-for-woocommerce' ); ?></label>
 					<select id="shadow-eth-asset" name="asset">
 						<?php foreach ( $assets as $asset ) : ?>
 							<option value="<?php echo esc_attr( $asset['id'] ); ?>">
@@ -155,7 +155,7 @@ final class PayPage {
 								echo esc_html(
 									sprintf(
 										/* translators: 1: asset label, 2: network name. */
-										__( '%1$s on %2$s', 'shadowpay-crypto-for-woocommerce' ),
+										__( '%1$s on %2$s', 'shadowchain-crypto-for-woocommerce' ),
 										$asset['label'],
 										$asset['network_name']
 									)
@@ -166,7 +166,7 @@ final class PayPage {
 					</select>
 				</div>
 
-				<button type="submit" class="shadow-eth-pay__submit button alt"><?php esc_html_e( 'Continue', 'shadowpay-crypto-for-woocommerce' ); ?></button>
+				<button type="submit" class="shadow-eth-pay__submit button alt"><?php esc_html_e( 'Continue', 'shadowchain-crypto-for-woocommerce' ); ?></button>
 			</form>
 
 			<?php $this->render_pay_footer(); ?>
@@ -202,7 +202,7 @@ final class PayPage {
 				<?php
 				printf(
 					/* translators: %s: asset symbol. */
-					esc_html__( 'Pay with %s', 'shadowpay-crypto-for-woocommerce' ),
+					esc_html__( 'Pay with %s', 'shadowchain-crypto-for-woocommerce' ),
 					esc_html( $symbol )
 				);
 				?>
@@ -212,7 +212,7 @@ final class PayPage {
 				<?php
 				printf(
 					/* translators: 1: amount, 2: asset symbol. */
-					esc_html__( 'Send exactly %1$s %2$s', 'shadowpay-crypto-for-woocommerce' ),
+					esc_html__( 'Send exactly %1$s %2$s', 'shadowchain-crypto-for-woocommerce' ),
 					'<strong>' . esc_html( $amount ) . '</strong>', // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inline.
 					esc_html( $symbol )
 				);
@@ -223,18 +223,18 @@ final class PayPage {
 				<?php
 				printf(
 					/* translators: %s: network name. */
-					esc_html__( 'On the %s network.', 'shadowpay-crypto-for-woocommerce' ),
+					esc_html__( 'On the %s network.', 'shadowchain-crypto-for-woocommerce' ),
 					'<strong>' . esc_html( $net_name ) . '</strong>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inline.
 				);
 				?>
-				<a href="<?php echo esc_url( add_query_arg( 'shadow_eth_change', '1', $order->get_checkout_payment_url() ) ); ?>"><?php esc_html_e( 'Change', 'shadowpay-crypto-for-woocommerce' ); ?></a>
+				<a href="<?php echo esc_url( add_query_arg( 'shadow_eth_change', '1', $order->get_checkout_payment_url() ) ); ?>"><?php esc_html_e( 'Change', 'shadowchain-crypto-for-woocommerce' ); ?></a>
 			</p>
 
 			<div class="shadow-eth-pay__field">
-				<label><?php esc_html_e( 'Pay to this address', 'shadowpay-crypto-for-woocommerce' ); ?></label>
+				<label><?php esc_html_e( 'Pay to this address', 'shadowchain-crypto-for-woocommerce' ); ?></label>
 				<div class="shadow-eth-pay__address">
 					<code class="shadow-eth-pay__address-value" id="shadow-eth-address"><?php echo esc_html( $pay_address ); ?></code>
-					<button type="button" class="shadow-eth-pay__copy button" data-copy-target="shadow-eth-address"><?php esc_html_e( 'Copy', 'shadowpay-crypto-for-woocommerce' ); ?></button>
+					<button type="button" class="shadow-eth-pay__copy button" data-copy-target="shadow-eth-address"><?php esc_html_e( 'Copy', 'shadowchain-crypto-for-woocommerce' ); ?></button>
 				</div>
 				<div class="shadow-eth-pay__qr" id="shadow-eth-qr" aria-hidden="true"></div>
 			</div>
@@ -247,24 +247,24 @@ final class PayPage {
 				<input type="hidden" name="order_key" value="<?php echo esc_attr( $order->get_order_key() ); ?>">
 				<?php wp_nonce_field( 'shadow_eth_submit_' . $order->get_id(), 'shadow_eth_nonce' ); ?>
 
-				<p class="shadow-eth-pay__form-intro"><?php esc_html_e( 'After you have sent the payment, confirm it below so we can check the blockchain and complete your order.', 'shadowpay-crypto-for-woocommerce' ); ?></p>
+				<p class="shadow-eth-pay__form-intro"><?php esc_html_e( 'After you have sent the payment, confirm it below so we can check the blockchain and complete your order.', 'shadowchain-crypto-for-woocommerce' ); ?></p>
 
 				<div class="shadow-eth-pay__field">
-					<label for="shadow-eth-sender"><?php esc_html_e( 'The wallet address you paid from (required)', 'shadowpay-crypto-for-woocommerce' ); ?></label>
+					<label for="shadow-eth-sender"><?php esc_html_e( 'The wallet address you paid from (required)', 'shadowchain-crypto-for-woocommerce' ); ?></label>
 					<input type="text" id="shadow-eth-sender" name="sender" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="<?php echo esc_attr( $addr_ph ); ?>" required aria-required="true">
-					<p class="shadow-eth-pay__hint"><?php esc_html_e( 'Copy this from your wallet — it is your own “from” address. We use it to confirm the payment is yours, so it is required even if you also add a transaction ID below.', 'shadowpay-crypto-for-woocommerce' ); ?></p>
+					<p class="shadow-eth-pay__hint"><?php esc_html_e( 'Copy this from your wallet — it is your own “from” address. We use it to confirm the payment is yours, so it is required even if you also add a transaction ID below.', 'shadowchain-crypto-for-woocommerce' ); ?></p>
 				</div>
 
 				<details class="shadow-eth-pay__advanced">
-					<summary><?php esc_html_e( 'I have a transaction ID (optional, but fastest)', 'shadowpay-crypto-for-woocommerce' ); ?></summary>
+					<summary><?php esc_html_e( 'I have a transaction ID (optional, but fastest)', 'shadowchain-crypto-for-woocommerce' ); ?></summary>
 					<div class="shadow-eth-pay__field">
-						<label for="shadow-eth-txhash"><?php esc_html_e( 'Transaction hash', 'shadowpay-crypto-for-woocommerce' ); ?></label>
+						<label for="shadow-eth-txhash"><?php esc_html_e( 'Transaction hash', 'shadowchain-crypto-for-woocommerce' ); ?></label>
 						<input type="text" id="shadow-eth-txhash" name="tx_hash" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="<?php echo esc_attr( $is_btc ? 'txid…' : '0x…' ); ?>">
-						<p class="shadow-eth-pay__hint"><?php esc_html_e( 'Your wallet shows this after the payment sends (sometimes called “Transaction ID” or “Hash”). Pasting it confirms your order the fastest.', 'shadowpay-crypto-for-woocommerce' ); ?></p>
+						<p class="shadow-eth-pay__hint"><?php esc_html_e( 'Your wallet shows this after the payment sends (sometimes called “Transaction ID” or “Hash”). Pasting it confirms your order the fastest.', 'shadowchain-crypto-for-woocommerce' ); ?></p>
 					</div>
 				</details>
 
-				<button type="submit" class="shadow-eth-pay__submit button alt"><?php esc_html_e( 'I’ve paid — check my payment', 'shadowpay-crypto-for-woocommerce' ); ?></button>
+				<button type="submit" class="shadow-eth-pay__submit button alt"><?php esc_html_e( 'I’ve paid — check my payment', 'shadowchain-crypto-for-woocommerce' ); ?></button>
 			</form>
 
 			<?php $this->render_pay_footer(); ?>
@@ -282,7 +282,7 @@ final class PayPage {
 	private function render_pay_footer(): void {
 		?>
 		<p class="shadow-eth-pay__footer">
-			<?php esc_html_e( 'Payments are made on a public blockchain and are irreversible once confirmed. Only the payment details you enter here are used, together with public blockchain data, to confirm your order.', 'shadowpay-crypto-for-woocommerce' ); ?>
+			<?php esc_html_e( 'Payments are made on a public blockchain and are irreversible once confirmed. Only the payment details you enter here are used, together with public blockchain data, to confirm your order.', 'shadowchain-crypto-for-woocommerce' ); ?>
 		</p>
 		<?php
 	}
@@ -312,17 +312,17 @@ final class PayPage {
 			data-status-nonce="<?php echo esc_attr( wp_create_nonce( $this->status_nonce_action( $order ) ) ); ?>"
 			data-poll="<?php echo $is_confirmed || $is_failed ? '0' : '1'; ?>">
 			<?php if ( $is_confirmed ) : ?>
-				<h2 class="shadow-eth-pay__heading"><?php esc_html_e( 'Payment confirmed', 'shadowpay-crypto-for-woocommerce' ); ?></h2>
-				<p class="shadow-eth-pay__status-msg"><?php esc_html_e( 'Thank you — your payment is confirmed and your order is complete.', 'shadowpay-crypto-for-woocommerce' ); ?></p>
+				<h2 class="shadow-eth-pay__heading"><?php esc_html_e( 'Payment confirmed', 'shadowchain-crypto-for-woocommerce' ); ?></h2>
+				<p class="shadow-eth-pay__status-msg"><?php esc_html_e( 'Thank you — your payment is confirmed and your order is complete.', 'shadowchain-crypto-for-woocommerce' ); ?></p>
 				<?php if ( '' !== $explorer ) : ?>
-					<p><a href="<?php echo esc_url( $explorer ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'View the transaction', 'shadowpay-crypto-for-woocommerce' ); ?></a></p>
+					<p><a href="<?php echo esc_url( $explorer ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'View the transaction', 'shadowchain-crypto-for-woocommerce' ); ?></a></p>
 				<?php endif; ?>
 			<?php elseif ( $is_failed ) : ?>
-				<h2 class="shadow-eth-pay__heading"><?php esc_html_e( 'We couldn’t confirm your payment', 'shadowpay-crypto-for-woocommerce' ); ?></h2>
-				<p class="shadow-eth-pay__status-msg"><?php esc_html_e( 'We did not detect a matching payment in time. If you did pay, please contact us with your transaction details and we’ll sort it out.', 'shadowpay-crypto-for-woocommerce' ); ?></p>
+				<h2 class="shadow-eth-pay__heading"><?php esc_html_e( 'We couldn’t confirm your payment', 'shadowchain-crypto-for-woocommerce' ); ?></h2>
+				<p class="shadow-eth-pay__status-msg"><?php esc_html_e( 'We did not detect a matching payment in time. If you did pay, please contact us with your transaction details and we’ll sort it out.', 'shadowchain-crypto-for-woocommerce' ); ?></p>
 			<?php else : ?>
-				<h2 class="shadow-eth-pay__heading"><?php esc_html_e( 'Confirming your payment…', 'shadowpay-crypto-for-woocommerce' ); ?></h2>
-				<p class="shadow-eth-pay__status-msg" id="shadow-eth-status-msg"><?php esc_html_e( 'We’re checking the blockchain for your payment. This page updates automatically — you can safely leave it open.', 'shadowpay-crypto-for-woocommerce' ); ?></p>
+				<h2 class="shadow-eth-pay__heading"><?php esc_html_e( 'Confirming your payment…', 'shadowchain-crypto-for-woocommerce' ); ?></h2>
+				<p class="shadow-eth-pay__status-msg" id="shadow-eth-status-msg"><?php esc_html_e( 'We’re checking the blockchain for your payment. This page updates automatically — you can safely leave it open.', 'shadowchain-crypto-for-woocommerce' ); ?></p>
 				<div class="shadow-eth-pay__spinner" aria-hidden="true"></div>
 			<?php endif; ?>
 		</div>
@@ -339,7 +339,7 @@ final class PayPage {
 		$order_key = isset( $_POST['order_key'] ) ? sanitize_text_field( wp_unslash( $_POST['order_key'] ) ) : '';
 
 		if ( ! isset( $_POST['shadow_eth_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['shadow_eth_nonce'] ) ), 'shadow_eth_submit_' . $order_id ) ) {
-			wp_die( esc_html__( 'Security check failed. Please go back and try again.', 'shadowpay-crypto-for-woocommerce' ), '', array( 'response' => 403 ) );
+			wp_die( esc_html__( 'Security check failed. Please go back and try again.', 'shadowchain-crypto-for-woocommerce' ), '', array( 'response' => 403 ) );
 		}
 
 		$order = wc_get_order( $order_id );
@@ -347,7 +347,7 @@ final class PayPage {
 		// Bind the action to the order key so only the buyer holding the order URL
 		// can submit against it.
 		if ( ! $order instanceof \WC_Order || ! hash_equals( $order->get_order_key(), $order_key ) ) {
-			wp_die( esc_html__( 'Order not found.', 'shadowpay-crypto-for-woocommerce' ), '', array( 'response' => 404 ) );
+			wp_die( esc_html__( 'Order not found.', 'shadowchain-crypto-for-woocommerce' ), '', array( 'response' => 404 ) );
 		}
 
 		if ( OrderMeta::STATE_AWAITING_PAYMENT !== OrderMeta::get_state( $order ) ) {
@@ -360,7 +360,7 @@ final class PayPage {
 		$asset    = Assets::get( $asset_id );
 
 		if ( null === $asset || ! $this->gateway->is_asset_enabled( $asset_id ) ) {
-			wc_add_notice( __( 'Please choose how you want to pay first.', 'shadowpay-crypto-for-woocommerce' ), 'error' );
+			wc_add_notice( __( 'Please choose how you want to pay first.', 'shadowchain-crypto-for-woocommerce' ), 'error' );
 			wp_safe_redirect( $order->get_checkout_payment_url() );
 			exit;
 		}
@@ -406,7 +406,7 @@ final class PayPage {
 			Verifier::capture_start_block( $order, $this->gateway, $network );
 		}
 
-		$order->add_order_note( __( 'Accept Crypto: buyer submitted payment details; verifying on-chain.', 'shadowpay-crypto-for-woocommerce' ) );
+		$order->add_order_note( __( 'Accept Crypto: buyer submitted payment details; verifying on-chain.', 'shadowchain-crypto-for-woocommerce' ) );
 		$order->save();
 
 		$this->checker->schedule( $order );
@@ -429,27 +429,27 @@ final class PayPage {
 		// customer can never claim another customer's payment. The transaction id
 		// is an optional accelerator on top of it.
 		if ( '' === $sender ) {
-			return __( 'Please enter the wallet address you paid from so we can confirm your payment.', 'shadowpay-crypto-for-woocommerce' );
+			return __( 'Please enter the wallet address you paid from so we can confirm your payment.', 'shadowchain-crypto-for-woocommerce' );
 		}
 
 		if ( $is_btc ) {
 			if ( ! BtcAddress::is_valid( $sender ) ) {
-				return __( 'That sending Bitcoin address doesn’t look right. It should start with bc1, 1 or 3.', 'shadowpay-crypto-for-woocommerce' );
+				return __( 'That sending Bitcoin address doesn’t look right. It should start with bc1, 1 or 3.', 'shadowchain-crypto-for-woocommerce' );
 			}
 
 			if ( '' !== $tx_hash && 1 !== preg_match( '/^[0-9a-fA-F]{64}$/', $tx_hash ) ) {
-				return __( 'That transaction ID doesn’t look right. It should be 64 hex characters.', 'shadowpay-crypto-for-woocommerce' );
+				return __( 'That transaction ID doesn’t look right. It should be 64 hex characters.', 'shadowchain-crypto-for-woocommerce' );
 			}
 
 			return '';
 		}
 
 		if ( ! Address::is_valid_format( $sender ) ) {
-			return __( 'That sending wallet address doesn’t look right. It should start with 0x and be 42 characters long.', 'shadowpay-crypto-for-woocommerce' );
+			return __( 'That sending wallet address doesn’t look right. It should start with 0x and be 42 characters long.', 'shadowchain-crypto-for-woocommerce' );
 		}
 
 		if ( '' !== $tx_hash && ! Address::is_valid_tx_hash( $tx_hash ) ) {
-			return __( 'That transaction hash doesn’t look right. It should start with 0x and be 66 characters long.', 'shadowpay-crypto-for-woocommerce' );
+			return __( 'That transaction hash doesn’t look right. It should start with 0x and be 66 characters long.', 'shadowchain-crypto-for-woocommerce' );
 		}
 
 		return '';
@@ -477,11 +477,11 @@ final class PayPage {
 		$order     = wc_get_order( $order_id );
 
 		if ( ! $order instanceof \WC_Order || ! hash_equals( $order->get_order_key(), $order_key ) ) {
-			wp_die( esc_html__( 'Order not found.', 'shadowpay-crypto-for-woocommerce' ), '', array( 'response' => 404 ) );
+			wp_die( esc_html__( 'Order not found.', 'shadowchain-crypto-for-woocommerce' ), '', array( 'response' => 404 ) );
 		}
 
 		if ( ! isset( $_POST['shadow_eth_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['shadow_eth_nonce'] ) ), $this->choose_nonce_action( $order ) ) ) {
-			wp_die( esc_html__( 'Security check failed. Please go back and try again.', 'shadowpay-crypto-for-woocommerce' ), '', array( 'response' => 403 ) );
+			wp_die( esc_html__( 'Security check failed. Please go back and try again.', 'shadowchain-crypto-for-woocommerce' ), '', array( 'response' => 403 ) );
 		}
 
 		if ( OrderMeta::STATE_AWAITING_PAYMENT !== OrderMeta::get_state( $order ) ) {
@@ -524,13 +524,13 @@ final class PayPage {
 		$order = wc_get_order( $order_id );
 
 		if ( ! $order instanceof \WC_Order ) {
-			wp_send_json_error( array( 'message' => __( 'Order not found.', 'shadowpay-crypto-for-woocommerce' ) ), 404 );
+			wp_send_json_error( array( 'message' => __( 'Order not found.', 'shadowchain-crypto-for-woocommerce' ) ), 404 );
 		}
 
 		// Nonce is bound to the order key, so only a holder of the order URL can
 		// poll it. Verify against this order's own action.
 		if ( ! wp_verify_nonce( $nonce, $this->status_nonce_action( $order ) ) ) {
-			wp_send_json_error( array( 'message' => __( 'Security check failed.', 'shadowpay-crypto-for-woocommerce' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'Security check failed.', 'shadowchain-crypto-for-woocommerce' ) ), 403 );
 		}
 
 		$state = OrderMeta::get_state( $order );
@@ -575,7 +575,7 @@ final class PayPage {
 	 */
 	private function network_label( string $network ): string {
 		if ( 'bitcoin' === $network ) {
-			return __( 'Bitcoin', 'shadowpay-crypto-for-woocommerce' );
+			return __( 'Bitcoin', 'shadowchain-crypto-for-woocommerce' );
 		}
 
 		$obj = Networks::get( $network );
@@ -620,11 +620,11 @@ final class PayPage {
 			array(
 				'address' => OrderMeta::get_string( $order, OrderMeta::PAY_ADDRESS ),
 				'qrUri'   => $this->payment_uri( $order ),
-				'copied'  => __( 'Copied!', 'shadowpay-crypto-for-woocommerce' ),
-				'copy'    => __( 'Copy', 'shadowpay-crypto-for-woocommerce' ),
+				'copied'  => __( 'Copied!', 'shadowchain-crypto-for-woocommerce' ),
+				'copy'    => __( 'Copy', 'shadowchain-crypto-for-woocommerce' ),
 				'i18n'    => array(
-					'confirmed' => __( 'Payment confirmed — finishing up…', 'shadowpay-crypto-for-woocommerce' ),
-					'failed'    => __( 'We couldn’t confirm your payment.', 'shadowpay-crypto-for-woocommerce' ),
+					'confirmed' => __( 'Payment confirmed — finishing up…', 'shadowchain-crypto-for-woocommerce' ),
+					'failed'    => __( 'We couldn’t confirm your payment.', 'shadowchain-crypto-for-woocommerce' ),
 				),
 			)
 		);

@@ -133,7 +133,7 @@ final class RateProvider {
 				'timeout'            => 10,
 				'reject_unsafe_urls' => true,
 				'headers'            => array( 'Accept' => 'application/json' ),
-				'user-agent'         => 'shadowpay-crypto-for-woocommerce/' . SHADOW_ETH_VERSION . '; ' . home_url(),
+				'user-agent'         => 'shadowchain-crypto-for-woocommerce/' . SHADOW_ETH_VERSION . '; ' . home_url(),
 			)
 		);
 
