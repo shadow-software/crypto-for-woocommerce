@@ -40,7 +40,7 @@ final class Networks {
 		return array(
 			'ethereum' => array(
 				'slug'                  => 'ethereum',
-				'name'                  => __( 'Ethereum', 'shadowchain-crypto-for-woocommerce' ),
+				'name'                  => __( 'Ethereum', 'shadowledger-crypto-for-woocommerce' ),
 				'chain_id'              => 1,
 				'currency'              => 'ETH',
 				'default_rpc'           => 'https://ethereum-rpc.publicnode.com',
@@ -51,7 +51,7 @@ final class Networks {
 			),
 			'base'     => array(
 				'slug'                  => 'base',
-				'name'                  => __( 'Base', 'shadowchain-crypto-for-woocommerce' ),
+				'name'                  => __( 'Base', 'shadowledger-crypto-for-woocommerce' ),
 				'chain_id'              => 8453,
 				'currency'              => 'ETH',
 				'default_rpc'           => 'https://base-rpc.publicnode.com',
@@ -62,7 +62,7 @@ final class Networks {
 			),
 			'arbitrum' => array(
 				'slug'                  => 'arbitrum',
-				'name'                  => __( 'Arbitrum One', 'shadowchain-crypto-for-woocommerce' ),
+				'name'                  => __( 'Arbitrum One', 'shadowledger-crypto-for-woocommerce' ),
 				'chain_id'              => 42161,
 				'currency'              => 'ETH',
 				'default_rpc'           => 'https://arbitrum-one-rpc.publicnode.com',
@@ -73,7 +73,7 @@ final class Networks {
 			),
 			'optimism' => array(
 				'slug'                  => 'optimism',
-				'name'                  => __( 'OP Mainnet', 'shadowchain-crypto-for-woocommerce' ),
+				'name'                  => __( 'OP Mainnet', 'shadowledger-crypto-for-woocommerce' ),
 				'chain_id'              => 10,
 				'currency'              => 'ETH',
 				'default_rpc'           => 'https://optimism-rpc.publicnode.com',

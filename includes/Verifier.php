@@ -127,7 +127,7 @@ final class Verifier {
 		$sender      = OrderMeta::get_string( $this->order, OrderMeta::SENDER );
 
 		if ( ! Networks::is_supported( $this->network ) || '' === $pay_address ) {
-			return VerificationResult::failed( __( 'This payment is missing its network configuration.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'This payment is missing its network configuration.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		// Fail closed: if the locked required amount is missing or zero, never
@@ -135,7 +135,7 @@ final class Verifier {
 		if ( '0' === $min_wei ) {
 			Logger::error( 'Order ' . $this->order->get_id() . ' has no locked required amount; refusing to verify.' );
 
-			return VerificationResult::failed( __( 'This order is missing its payment amount. Please contact us to complete it.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'This order is missing its payment amount. Please contact us to complete it.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		try {
@@ -154,10 +154,10 @@ final class Verifier {
 			Logger::warn( 'Verify RPC error for order ' . $this->order->get_id() . ': ' . $e->getMessage() );
 
 			// A node hiccup is transient — stay pending so the poller retries.
-			return VerificationResult::pending( __( 'Checking the network… we could not reach a node just now and will retry shortly.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Checking the network… we could not reach a node just now and will retry shortly.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
-		return VerificationResult::pending( __( 'Waiting for your payment details.', 'shadowchain-crypto-for-woocommerce' ) );
+		return VerificationResult::pending( __( 'Waiting for your payment details.', 'shadowledger-crypto-for-woocommerce' ) );
 	}
 
 	/**
@@ -174,20 +174,20 @@ final class Verifier {
 		// claim a stranger's on-chain payment by pasting its public hash. If it is
 		// somehow absent, refuse rather than confirm on recipient + amount alone.
 		if ( '' === $sender ) {
-			return VerificationResult::failed( __( 'We need the wallet address you paid from to confirm this payment.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'We need the wallet address you paid from to confirm this payment.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		$tx = $this->rpc->get_transaction( $tx_hash );
 
 		if ( null === $tx ) {
-			return VerificationResult::pending( __( 'Your transaction has not appeared on the network yet. This can take a moment after you send it.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Your transaction has not appeared on the network yet. This can take a moment after you send it.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		// Sender MUST match the wallet the buyer entered (native tx sender).
 		$from = isset( $tx['from'] ) && is_string( $tx['from'] ) ? $tx['from'] : '';
 
 		if ( ! Address::equals( $from, $sender ) ) {
-			return VerificationResult::failed( __( 'That transaction was not sent from the wallet you entered. Please check and try again.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'That transaction was not sent from the wallet you entered. Please check and try again.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		if ( $this->is_erc20() ) {
@@ -198,7 +198,7 @@ final class Verifier {
 			$to = isset( $tx['to'] ) && is_string( $tx['to'] ) ? $tx['to'] : '';
 
 			if ( ! Address::equals( $to, $this->token_contract() ) ) {
-				return VerificationResult::failed( __( 'That transaction is not a payment of the requested token. Please check and try again.', 'shadowchain-crypto-for-woocommerce' ) );
+				return VerificationResult::failed( __( 'That transaction is not a payment of the requested token. Please check and try again.', 'shadowledger-crypto-for-woocommerce' ) );
 			}
 
 			return $this->finalise_with_receipt( $tx_hash, $pay_address, $sender, $min_wei );
@@ -208,7 +208,7 @@ final class Verifier {
 		$to = isset( $tx['to'] ) && is_string( $tx['to'] ) ? $tx['to'] : '';
 
 		if ( ! Address::equals( $to, $pay_address ) ) {
-			return VerificationResult::failed( __( 'That transaction did not pay the store wallet. Please check the transaction and try again.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'That transaction did not pay the store wallet. Please check the transaction and try again.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		$value_wei = isset( $tx['value'] ) && is_string( $tx['value'] ) ? Money::hex_to_dec( $tx['value'] ) : '0';
@@ -230,7 +230,7 @@ final class Verifier {
 		return VerificationResult::failed(
 			sprintf(
 				/* translators: 1: amount paid, 2: amount required, 3: asset symbol. */
-				__( 'That payment was for %1$s %3$s but %2$s %3$s is required. If you underpaid, please send the difference in a new transaction.', 'shadowchain-crypto-for-woocommerce' ),
+				__( 'That payment was for %1$s %3$s but %2$s %3$s is required. If you underpaid, please send the difference in a new transaction.', 'shadowledger-crypto-for-woocommerce' ),
 				Money::from_base_units( $paid_units, $this->decimals() ),
 				Money::from_base_units( $required_units, $this->decimals() ),
 				$this->symbol()
@@ -256,13 +256,13 @@ final class Verifier {
 		// matches an older transfer). The authoritative, race-safe claim happens
 		// at completion time; this is the early, friendly rejection.
 		if ( ! TxRegistry::is_available_for( $this->network, $tx_hash, $this->order->get_id() ) ) {
-			return VerificationResult::failed( __( 'That transaction has already been used to pay another order. Please make a new payment for this order.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'That transaction has already been used to pay another order. Please make a new payment for this order.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		$receipt = $this->rpc->get_transaction_receipt( $tx_hash );
 
 		if ( null === $receipt ) {
-			return VerificationResult::pending( __( 'Your payment was found and is waiting to be mined into a block.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Your payment was found and is waiting to be mined into a block.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		// Require an EXPLICIT success status. On all supported (post-Byzantium)
@@ -274,11 +274,11 @@ final class Verifier {
 		$status     = self::hex_to_small_int( $status_hex );
 
 		if ( 0 === $status ) {
-			return VerificationResult::failed( __( 'That transaction failed on-chain (it was reverted), so no payment was received.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'That transaction failed on-chain (it was reverted), so no payment was received.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		if ( 1 !== $status ) {
-			return VerificationResult::pending( __( 'Your payment is confirming. Please wait a moment.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Your payment is confirming. Please wait a moment.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		// For an ERC-20 token, the actual payment (recipient + amount) is proven by
@@ -296,7 +296,7 @@ final class Verifier {
 		$tx_block  = self::hex_to_small_int( $block_hex );
 
 		if ( $tx_block <= 0 ) {
-			return VerificationResult::pending( __( 'Your payment is confirming. Please wait a moment.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Your payment is confirming. Please wait a moment.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		$head     = $this->rpc->block_number();
@@ -307,7 +307,7 @@ final class Verifier {
 			return VerificationResult::pending(
 				sprintf(
 					/* translators: 1: current confirmations, 2: required confirmations. */
-					__( 'Payment found — waiting for network confirmations (%1$d of %2$d).', 'shadowchain-crypto-for-woocommerce' ),
+					__( 'Payment found — waiting for network confirmations (%1$d of %2$d).', 'shadowledger-crypto-for-woocommerce' ),
 					$confs,
 					$required
 				),
@@ -363,7 +363,7 @@ final class Verifier {
 		}
 
 		if ( ! $found ) {
-			return VerificationResult::failed( __( 'That transaction did not include a token payment to the store from your wallet. Please check and try again.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'That transaction did not include a token payment to the store from your wallet. Please check and try again.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		if ( Money::compare( $total, $min_units ) < 0 ) {
@@ -394,7 +394,7 @@ final class Verifier {
 		// or a transient reorg), do NOT scan and do NOT move the cursor backward —
 		// just wait and retry. The cursor only ever advances.
 		if ( $head < $cursor ) {
-			return VerificationResult::pending( __( 'Looking for your payment on the network. Please wait a moment.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::pending( __( 'Looking for your payment on the network. Please wait a moment.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		// Scan forward from the cursor, capped per run.
@@ -459,7 +459,7 @@ final class Verifier {
 		$this->order->update_meta_data( OrderMeta::START_BLOCK, (string) $next );
 		$this->order->save();
 
-		return VerificationResult::pending( __( 'Looking for your payment on the network. If you have paid, this usually clears within a few minutes.', 'shadowchain-crypto-for-woocommerce' ) );
+		return VerificationResult::pending( __( 'Looking for your payment on the network. If you have paid, this usually clears within a few minutes.', 'shadowledger-crypto-for-woocommerce' ) );
 	}
 
 	/**
@@ -479,7 +479,7 @@ final class Verifier {
 		$to_topic   = Erc20::address_topic( $pay_address );
 
 		if ( '' === $from_topic || '' === $to_topic ) {
-			return VerificationResult::failed( __( 'This order is missing valid payment addresses.', 'shadowchain-crypto-for-woocommerce' ) );
+			return VerificationResult::failed( __( 'This order is missing valid payment addresses.', 'shadowledger-crypto-for-woocommerce' ) );
 		}
 
 		$logs = $this->rpc->get_logs(
@@ -513,7 +513,7 @@ final class Verifier {
 		$this->order->update_meta_data( OrderMeta::START_BLOCK, (string) $next );
 		$this->order->save();
 
-		return VerificationResult::pending( __( 'Looking for your payment on the network. If you have paid, this usually clears within a few minutes.', 'shadowchain-crypto-for-woocommerce' ) );
+		return VerificationResult::pending( __( 'Looking for your payment on the network. If you have paid, this usually clears within a few minutes.', 'shadowledger-crypto-for-woocommerce' ) );
 	}
 
 	/**

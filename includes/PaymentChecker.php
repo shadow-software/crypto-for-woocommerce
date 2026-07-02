@@ -135,7 +135,7 @@ final class PaymentChecker {
 
 		// Still pending. Give up if the payment window has elapsed.
 		if ( $this->window_elapsed( $order, $gateway ) ) {
-			$this->fail_order( $order, __( 'We did not detect a matching payment within the payment window.', 'shadowchain-crypto-for-woocommerce' ) );
+			$this->fail_order( $order, __( 'We did not detect a matching payment within the payment window.', 'shadowledger-crypto-for-woocommerce' ) );
 
 			return;
 		}
@@ -168,7 +168,7 @@ final class PaymentChecker {
 					$owner
 				)
 			);
-			$this->fail_order( $order, __( 'This transaction has already been used to pay another order.', 'shadowchain-crypto-for-woocommerce' ) );
+			$this->fail_order( $order, __( 'This transaction has already been used to pay another order.', 'shadowledger-crypto-for-woocommerce' ) );
 
 			return;
 		}
@@ -183,11 +183,11 @@ final class PaymentChecker {
 			: Networks::explorer_tx_url( $network, $result->tx_hash() );
 
 		$network_obj = Networks::get( $network );
-		$net_name    = null !== $network_obj ? $network_obj['name'] : ( 'bitcoin' === $network ? __( 'Bitcoin', 'shadowchain-crypto-for-woocommerce' ) : $network );
+		$net_name    = null !== $network_obj ? $network_obj['name'] : ( 'bitcoin' === $network ? __( 'Bitcoin', 'shadowledger-crypto-for-woocommerce' ) : $network );
 
 		$note = sprintf(
 			/* translators: 1: asset symbol, 2: network name, 3: confirmations, 4: transaction hash. */
-			__( 'Accept Crypto: %1$s payment confirmed on %2$s with %3$d confirmations. Tx: %4$s', 'shadowchain-crypto-for-woocommerce' ),
+			__( 'Accept Crypto: %1$s payment confirmed on %2$s with %3$d confirmations. Tx: %4$s', 'shadowledger-crypto-for-woocommerce' ),
 			$symbol,
 			$net_name,
 			$result->confirmations(),
@@ -221,7 +221,7 @@ final class PaymentChecker {
 			'failed',
 			sprintf(
 				/* translators: %s: reason the payment failed. */
-				__( 'Accept Crypto: %s', 'shadowchain-crypto-for-woocommerce' ),
+				__( 'Accept Crypto: %s', 'shadowledger-crypto-for-woocommerce' ),
 				$message
 			)
 		);
