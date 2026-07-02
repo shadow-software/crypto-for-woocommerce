@@ -8,6 +8,10 @@ composer.phar
 /dist/
 *.zip
 
+# Local wp-env dev site (used only to capture screenshots)
+/.wp-env.json
+/.wp-env.override.json
+
 # Test + tooling caches
 .phpunit.cache/
 .phpunit.result.cache

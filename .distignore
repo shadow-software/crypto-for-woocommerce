@@ -13,6 +13,8 @@
 /.gitattributes
 /.distignore
 /.editorconfig
+/.wp-env.json
+/.wp-env.override.json
 
 # Documentation (readme.txt is the user-facing one and is NOT ignored)
 /README.md

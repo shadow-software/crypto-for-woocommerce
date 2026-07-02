@@ -16,6 +16,15 @@ WordPress.org reads separately, and are never included in the installable ZIP
 | `icon-128x128.png` | 128×128 | Static icon (standard DPI) |
 | `banner-772x250.png` | 772×250 | Header banner on the plugin's directory page |
 | `banner-1544x500.png` | 1544×500 | Header banner (retina) |
+| `screenshot-1.png` | 1160×1008 @2x | "Screenshots" tab — the branded gateway settings screen |
+| `screenshot-2.png` | 610×904 @2x | "Screenshots" tab — the buyer pay page (amount, address, QR, confirm form) |
+| `screenshot-3.png` | 610×266 @2x | "Screenshots" tab — the live "Confirming your payment…" panel |
+
+The `screenshot-N.png` files map, in order, to the numbered list under
+`== Screenshots ==` in `readme.txt` — `screenshot-1.png` is caption 1, and so on.
+They are captured from a live WooCommerce store running this plugin (a throwaway
+`wp-env` site), not mocked. WordPress.org shows them on the plugin page's
+**Screenshots** tab.
 
 The animated icon is a Shadow Software hexagon-and-hood mark beside a coin that
 flips between the Ethereum and Bitcoin faces. WordPress.org supports an animated
