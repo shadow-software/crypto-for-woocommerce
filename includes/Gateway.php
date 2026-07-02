@@ -31,7 +31,13 @@ final class Gateway extends \WC_Payment_Gateway {
 	private const BRAND_URL = 'https://shadowsoftware.com';
 
 	/**
-	 * Documentation / support page.
+	 * Documentation URL — the plugin's GitHub README (the marketing site does not
+	 * carry the plugin docs yet).
+	 */
+	private const DOCS_URL = 'https://github.com/shadow-software/crypto-woocommerce#readme';
+
+	/**
+	 * Support / contact page.
 	 */
 	private const SUPPORT_URL = 'https://shadowsoftware.com/contact';
 
@@ -358,7 +364,7 @@ final class Gateway extends \WC_Payment_Gateway {
 					?>
 				</span>
 				<span class="sh-sep" aria-hidden="true">·</span>
-				<a href="<?php echo esc_url( self::SUPPORT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Documentation', 'shadow-software-crypto-for-woocommerce' ); ?></a>
+				<a href="<?php echo esc_url( self::DOCS_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Documentation', 'shadow-software-crypto-for-woocommerce' ); ?></a>
 				<a href="<?php echo esc_url( self::SUPPORT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Support', 'shadow-software-crypto-for-woocommerce' ); ?></a>
 				<span class="sh-sep" aria-hidden="true">·</span>
 				<span class="shadow-eth-admin__by">
