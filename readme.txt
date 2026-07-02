@@ -228,9 +228,9 @@ Full policies for the plugin's author, Shadow Software LLC:
 
 == Screenshots ==
 
-1. The branded gateway settings screen under WooCommerce Settings Payments: enable crypto, set the title and description, enter your EVM receiving address, then choose networks, assets, Bitcoin, confirmations, tolerance and the payment window.
-2. The customer pay page for a chosen asset, here ETH: the exact amount to send, your receiving address with a copy button and a scannable QR code, and the simple form where the buyer confirms the wallet they paid from and an optional transaction id.
-3. Live confirmation: after the buyer confirms, the page shows a confirming message and updates itself automatically as the payment settles on-chain.
+1. The branded gateway settings screen: receiving addresses, network and asset toggles, Bitcoin, confirmations, tolerance and the payment window.
+2. The customer pay page: the exact amount, your address with a QR code, and the form to confirm the paid-from wallet and optional transaction id.
+3. Live confirmation: the pay page updates itself automatically as the payment settles on-chain.
 
 == Changelog ==
 
