@@ -31,6 +31,16 @@ Supported payments:
 This plugin is completely free and open source. It is built and maintained by
 [Shadow Software](https://shadowsoftware.com/).
 
+= Documentation and source code =
+
+The plugin is developed in the open on GitHub, and the project README is its full
+documentation — the security model, every supported asset and network, the
+external services it contacts, and how to build and test it yourself.
+
+* Documentation: https://github.com/shadow-software/crypto-woocommerce#readme
+* Source code and releases: https://github.com/shadow-software/crypto-woocommerce
+* Report a bug or request a feature: https://github.com/shadow-software/crypto-woocommerce/issues
+
 = How it works =
 
 1. The merchant enters their own receiving addresses (one EVM address for
@@ -148,6 +158,15 @@ You may optionally supply your own RPC endpoints.
 = Is HPOS (High-Performance Order Storage) supported? =
 
 Yes, along with the WooCommerce Cart and Checkout blocks.
+
+= Where are the documentation and the source code? =
+
+Both are on GitHub. The project README documents the security model, the supported
+assets and networks, the external services the plugin contacts, and how to build
+and test it: https://github.com/shadow-software/crypto-woocommerce#readme
+
+Bug reports and feature requests are welcome at
+https://github.com/shadow-software/crypto-woocommerce/issues
 
 == External services ==
 

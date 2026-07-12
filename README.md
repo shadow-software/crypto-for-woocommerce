@@ -12,12 +12,23 @@
 </p>
 
 <p align="center">
-  <a href="#"><img alt="CI" src="https://github.com/shadow-software/crypto-woocommerce/actions/workflows/ci.yml/badge.svg?branch=production"></a>
+  <a href="https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/"><img alt="WordPress.org version" src="https://img.shields.io/wordpress/plugin/v/shadow-software-crypto-for-woocommerce?label=WordPress.org&color=21759b"></a>
+  <a href="https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/"><img alt="WordPress.org downloads" src="https://img.shields.io/wordpress/plugin/dt/shadow-software-crypto-for-woocommerce?label=downloads&color=21759b"></a>
+  <a href="https://github.com/shadow-software/crypto-woocommerce/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/shadow-software/crypto-woocommerce?label=GitHub%20release"></a>
+  <a href="https://github.com/shadow-software/crypto-woocommerce/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/shadow-software/crypto-woocommerce/actions/workflows/ci.yml/badge.svg?branch=production"></a>
   <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.4%2B-21759b">
   <img alt="WooCommerce" src="https://img.shields.io/badge/WooCommerce-8.2%2B-96588a">
   <img alt="PHP" src="https://img.shields.io/badge/PHP-8.0%2B-777bb4">
   <img alt="License" src="https://img.shields.io/badge/License-GPL--2.0--or--later-blue">
   <img alt="HPOS" src="https://img.shields.io/badge/HPOS-compatible-8fd468">
+</p>
+
+<p align="center">
+  <b><a href="https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/">Get it on WordPress.org →</a></b>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/shadow-software/crypto-woocommerce/releases/latest">Download the latest ZIP</a>
+  &nbsp;·&nbsp;
+  <a href="#installation">Installation</a>
 </p>
 
 <p align="center">
@@ -93,13 +104,31 @@ See [SECURITY.md](SECURITY.md) to report a vulnerability.
 
 ## Installation
 
-1. Download the latest release ZIP (or clone this repo and zip the plugin folder).
+The plugin is listed in the official
+**[WordPress.org plugin directory](https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/)**,
+which is the easiest way to install it and the only one that gives you automatic
+updates.
+
+**From your WordPress admin (recommended)**
+
+1. Go to **Plugins → Add New**, search for **Shadow Software Crypto for
+   WooCommerce**, then click **Install Now** and **Activate**.
+
+**From a ZIP**
+
+1. Download the ZIP from the
+   [WordPress.org page](https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/)
+   or from [**GitHub Releases**](https://github.com/shadow-software/crypto-woocommerce/releases/latest).
 2. In WordPress: **Plugins → Add New → Upload Plugin**, choose the ZIP, install
-   and activate. WooCommerce must be active.
-3. Go to **WooCommerce → Settings → Payments → Crypto (self-custodial)**.
-4. Enable it, paste your **EVM receiving address** and/or your **Bitcoin address**,
+   and activate.
+
+Then, however you installed it:
+
+1. Make sure WooCommerce is active.
+2. Go to **WooCommerce → Settings → Payments → Crypto (self-custodial)**.
+3. Enable it, paste your **EVM receiving address** and/or your **Bitcoin address**,
    and tick the assets and networks you want to accept.
-5. Save. "Pay with crypto" now appears at checkout.
+4. Save. "Pay with crypto" now appears at checkout.
 
 WordPress's background scheduler (Action Scheduler, bundled with WooCommerce)
 drives the on-chain checks, so make sure your site's cron is running normally.
