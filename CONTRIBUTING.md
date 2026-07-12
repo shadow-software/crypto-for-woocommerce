@@ -13,8 +13,8 @@ weaken any of the payment-integrity guarantees described in the
 ## Getting set up
 
 ```bash
-git clone git@github.com:shadow-software/crypto-woocommerce.git
-cd crypto-woocommerce
+git clone git@github.com:shadow-software/shadow-software-crypto-for-woocommerce.git
+cd shadow-software-crypto-for-woocommerce
 composer install
 ```
 
@@ -47,7 +47,7 @@ composer test       # unit tests
 - **Exact money math only.** Never use floats for amounts — use the big-integer
   helpers in `includes/Money.php` (wei / sats / token base units).
 - **Escape on output, sanitize on input, verify nonces.** No exceptions.
-- **Every user-facing string** uses the `crypto-woocommerce` text domain.
+- **Every user-facing string** uses the `shadow-software-crypto-for-woocommerce` text domain.
 
 ## Adding a network or token
 

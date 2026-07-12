@@ -34,7 +34,7 @@ final class Gateway extends \WC_Payment_Gateway {
 	 * Documentation URL — the plugin's GitHub README (the marketing site does not
 	 * carry the plugin docs yet).
 	 */
-	private const DOCS_URL = 'https://github.com/shadow-software/crypto-woocommerce#readme';
+	private const DOCS_URL = 'https://github.com/shadow-software/shadow-software-crypto-for-woocommerce#readme';
 
 	/**
 	 * Support / contact page.

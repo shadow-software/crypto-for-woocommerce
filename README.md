@@ -14,8 +14,8 @@
 <p align="center">
   <a href="https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/"><img alt="WordPress.org version" src="https://img.shields.io/wordpress/plugin/v/shadow-software-crypto-for-woocommerce?label=WordPress.org&color=21759b"></a>
   <a href="https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/"><img alt="WordPress.org downloads" src="https://img.shields.io/wordpress/plugin/dt/shadow-software-crypto-for-woocommerce?label=downloads&color=21759b"></a>
-  <a href="https://github.com/shadow-software/crypto-woocommerce/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/shadow-software/crypto-woocommerce?label=GitHub%20release"></a>
-  <a href="https://github.com/shadow-software/crypto-woocommerce/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/shadow-software/crypto-woocommerce/actions/workflows/ci.yml/badge.svg?branch=production"></a>
+  <a href="https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/shadow-software/shadow-software-crypto-for-woocommerce?label=GitHub%20release"></a>
+  <a href="https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/actions/workflows/ci.yml/badge.svg?branch=production"></a>
   <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.4%2B-21759b">
   <img alt="WooCommerce" src="https://img.shields.io/badge/WooCommerce-8.2%2B-96588a">
   <img alt="PHP" src="https://img.shields.io/badge/PHP-8.0%2B-777bb4">
@@ -26,7 +26,7 @@
 <p align="center">
   <b><a href="https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/">Get it on WordPress.org →</a></b>
   &nbsp;·&nbsp;
-  <a href="https://github.com/shadow-software/crypto-woocommerce/releases/latest">Download the latest ZIP</a>
+  <a href="https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/releases/latest">Download the latest ZIP</a>
   &nbsp;·&nbsp;
   <a href="#installation">Installation</a>
 </p>
@@ -118,7 +118,7 @@ updates.
 
 1. Download the ZIP from the
    [WordPress.org page](https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/)
-   or from [**GitHub Releases**](https://github.com/shadow-software/crypto-woocommerce/releases/latest).
+   or from [**GitHub Releases**](https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/releases/latest).
 2. In WordPress: **Plugins → Add New → Upload Plugin**, choose the ZIP, install
    and activate.
 
