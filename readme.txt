@@ -5,7 +5,7 @@ Tags: woocommerce, crypto, bitcoin, ethereum, stablecoin
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 WC requires at least: 8.2
 WC tested up to: 10.8
 License: GPLv2 or later
@@ -253,6 +253,14 @@ Full policies for the plugin's author, Shadow Software LLC:
 
 == Changelog ==
 
+= 1.0.1 =
+* The plugin is now listed on WordPress.org, and its "Documentation" links (on the
+  gateway settings screen and the Plugins list) point at the project README on
+  GitHub, which is the plugin's full documentation.
+* Fixed those links to use the repository's current address; they previously
+  relied on a GitHub redirect.
+* No functional changes — payment handling is untouched.
+
 = 1.0.0 =
 * Initial release: self-custodial crypto payments to the merchant's own wallets —
   native ETH plus USDC and USDT (ERC-20) on Ethereum, Base, Arbitrum One and OP
@@ -264,6 +272,9 @@ Full policies for the plugin's author, Shadow Software LLC:
   offline QR codes, HPOS support, and WooCommerce Blocks support.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Documentation links only. No functional changes.
 
 = 1.0.0 =
 Initial release.

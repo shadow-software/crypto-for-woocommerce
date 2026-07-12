@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Shadow Software Crypto for WooCommerce 1.0.0\n"
+"Project-Id-Version: Shadow Software Crypto for WooCommerce 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shadow-software-crypto-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: shadow-software-crypto-for-woocommerce.php
-msgid "https://github.com/shadow-software/crypto-woocommerce"
+msgid "https://github.com/shadow-software/shadow-software-crypto-for-woocommerce"
 msgstr ""
 
 #. Description of the plugin

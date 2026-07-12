@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name:       Shadow Software Crypto for WooCommerce
- * Plugin URI:        https://github.com/shadow-software/crypto-woocommerce
+ * Plugin URI:        https://github.com/shadow-software/shadow-software-crypto-for-woocommerce
  * Description:       A simple, free, open-source plugin to confirm common blockchain transactions (USDT/USDC/BTC/ETH) and mark orders paid in Woocommerce. Enter your own receiving addresses; customers pay them directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No middleman, no fees, no keys on your server.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Requires Plugins:  woocommerce
@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 
 // Keep in lockstep with the "Version:" header above and readme.txt's
 // "Stable tag:" + changelog.
-define( 'SHADOW_ETH_VERSION', '1.0.0' );
+define( 'SHADOW_ETH_VERSION', '1.0.1' );
 define( 'SHADOW_ETH_FILE', __FILE__ );
 define( 'SHADOW_ETH_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SHADOW_ETH_URL', plugin_dir_url( __FILE__ ) );

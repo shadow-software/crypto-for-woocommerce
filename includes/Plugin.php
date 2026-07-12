@@ -193,7 +193,7 @@ final class Plugin {
 			return $links;
 		}
 
-		$links[] = '<a href="' . esc_url( 'https://github.com/shadow-software/crypto-woocommerce#readme' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Documentation', 'shadow-software-crypto-for-woocommerce' ) . '</a>';
+		$links[] = '<a href="' . esc_url( 'https://github.com/shadow-software/shadow-software-crypto-for-woocommerce#readme' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Documentation', 'shadow-software-crypto-for-woocommerce' ) . '</a>';
 		$links[] = '<a href="' . esc_url( 'https://shadowsoftware.com/contact' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Support', 'shadow-software-crypto-for-woocommerce' ) . '</a>';
 
 		return $links;
