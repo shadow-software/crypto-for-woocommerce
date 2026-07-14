@@ -14,8 +14,8 @@
 <p align="center">
   <a href="https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/"><img alt="WordPress.org version" src="https://img.shields.io/wordpress/plugin/v/shadow-software-crypto-for-woocommerce?label=WordPress.org&color=21759b"></a>
   <a href="https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/"><img alt="WordPress.org downloads" src="https://img.shields.io/wordpress/plugin/dt/shadow-software-crypto-for-woocommerce?label=downloads&color=21759b"></a>
-  <a href="https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/shadow-software/shadow-software-crypto-for-woocommerce?label=GitHub%20release"></a>
-  <a href="https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/actions/workflows/ci.yml/badge.svg?branch=production"></a>
+  <a href="https://github.com/shadow-software/crypto-for-woocommerce/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/v/release/shadow-software/shadow-software-crypto-for-woocommerce?label=GitHub%20release"></a>
+  <a href="https://github.com/shadow-software/crypto-for-woocommerce/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/shadow-software/crypto-for-woocommerce/actions/workflows/ci.yml/badge.svg?branch=production"></a>
   <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.4%2B-21759b">
   <img alt="WooCommerce" src="https://img.shields.io/badge/WooCommerce-8.2%2B-96588a">
   <img alt="PHP" src="https://img.shields.io/badge/PHP-8.0%2B-777bb4">
@@ -26,7 +26,7 @@
 <p align="center">
   <b><a href="https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/">Get it on WordPress.org →</a></b>
   &nbsp;·&nbsp;
-  <a href="https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/releases/latest">Download the latest ZIP</a>
+  <a href="https://github.com/shadow-software/crypto-for-woocommerce/releases/latest">Download the latest ZIP</a>
   &nbsp;·&nbsp;
   <a href="#installation">Installation</a>
 </p>
@@ -118,7 +118,7 @@ updates.
 
 1. Download the ZIP from the
    [WordPress.org page](https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/)
-   or from [**GitHub Releases**](https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/releases/latest).
+   or from [**GitHub Releases**](https://github.com/shadow-software/crypto-for-woocommerce/releases/latest).
 2. In WordPress: **Plugins → Add New → Upload Plugin**, choose the ZIP, install
    and activate.
 
@@ -194,3 +194,29 @@ right?** → **[shadowsoftware.com](https://shadowsoftware.com/)** ·
 [GPL-2.0-or-later](LICENSE) © [Shadow Software LLC](https://shadowsoftware.com/).
 "WordPress" and "WooCommerce" are trademarks of their respective owners; this
 plugin is an independent, unofficial integration.
+
+---
+
+## Also by Shadow Software
+
+**WordPress & WooCommerce**
+
+| | |
+|---|---|
+| [**Broadside**](https://github.com/shadow-software/broadside-theme-for-wordpress) | A broadsheet block theme for WordPress — blackletter masthead, folio rule, three-column lead grid. |
+| [**Broadside Blocks**](https://github.com/shadow-software/broadside-blocks-for-wordpress) | The editorial furniture that ships with it — short answer, takeaways, contents, FAQ schema, sources. |
+| [**Crypto for WooCommerce**](https://github.com/shadow-software/crypto-for-woocommerce) | Free, self-custodial crypto payments — ETH, USDC, USDT & Bitcoin, confirmed on-chain. [On WordPress.org →](https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/) |
+| [**AGT for WooCommerce**](https://github.com/shadow-software/agt-for-woocommerce) | Sync your WooCommerce store with your American Gun Trader dealer listings. |
+
+**n8n**
+
+We run our automation on [n8n](https://n8n.io), and publish the nodes we had to build for it:
+
+| | |
+|---|---|
+| [**n8n-nodes-huggingface-space**](https://github.com/shadow-software/n8n-nodes-huggingface-space) | Run inference on any Hugging Face Gradio Space from n8n — images, video, music, speech, text and moderation, with a curated model catalog and automatic fallbacks. |
+| [**n8n-nodes-custom-exec-node**](https://github.com/shadow-software/n8n-nodes-custom-exec-node) | Brings back `bash` in n8n, which v2.0 removed. |
+
+<p align="center">
+  <sub><a href="https://shadowsoftware.com/">shadowsoftware.com</a> · GPL-2.0-or-later · © 2026 Shadow Software LLC</sub>
+</p>

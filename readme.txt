@@ -37,9 +37,9 @@ The plugin is developed in the open on GitHub, and the project README is its ful
 documentation — the security model, every supported asset and network, the
 external services it contacts, and how to build and test it yourself.
 
-* Documentation: https://github.com/shadow-software/shadow-software-crypto-for-woocommerce#readme
-* Source code and releases: https://github.com/shadow-software/shadow-software-crypto-for-woocommerce
-* Report a bug or request a feature: https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/issues
+* Documentation: https://github.com/shadow-software/crypto-for-woocommerce#readme
+* Source code and releases: https://github.com/shadow-software/crypto-for-woocommerce
+* Report a bug or request a feature: https://github.com/shadow-software/crypto-for-woocommerce/issues
 
 = How it works =
 
@@ -163,10 +163,10 @@ Yes, along with the WooCommerce Cart and Checkout blocks.
 
 Both are on GitHub. The project README documents the security model, the supported
 assets and networks, the external services the plugin contacts, and how to build
-and test it: https://github.com/shadow-software/shadow-software-crypto-for-woocommerce#readme
+and test it: https://github.com/shadow-software/crypto-for-woocommerce#readme
 
 Bug reports and feature requests are welcome at
-https://github.com/shadow-software/shadow-software-crypto-for-woocommerce/issues
+https://github.com/shadow-software/crypto-for-woocommerce/issues
 
 == External services ==
 
