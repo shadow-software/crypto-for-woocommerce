@@ -5,7 +5,7 @@ Tags: woocommerce, crypto, bitcoin, ethereum, stablecoin
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 WC requires at least: 8.2
 WC tested up to: 10.8
 License: GPLv2 or later
@@ -252,6 +252,15 @@ Full policies for the plugin's author, Shadow Software LLC:
 3. Live confirmation: the pay page updates itself automatically as the payment settles on-chain.
 
 == Changelog ==
+
+= 1.0.2 =
+* Housekeeping. The source repository moved to
+  github.com/shadow-software/crypto-for-woocommerce and every link now points there
+  directly rather than through a redirect.
+* **The plugin itself is unchanged.** No code, no behaviour, no settings. The plugin
+  slug is still `shadow-software-crypto-for-woocommerce` and always will be — on
+  WordPress.org a slug is the update key, not a label, and renaming one orphans every
+  install that has it.
 
 = 1.0.1 =
 * The plugin is now listed on WordPress.org, and its "Documentation" links (on the
