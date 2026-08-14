@@ -66,25 +66,25 @@ jobs:
       - name: Unit tests — PHPUnit
         run: composer test
 
-  # A fast, dependency-free PHP 8.0 syntax gate so we always know the code at
-  # least parses on the minimum supported runtime, even though the test tooling
-  # cannot run there.
-  php80-syntax:
-    name: PHP 8.0 syntax
+  # A fast, dependency-free PHP 8.2 syntax gate so we always know the code at
+  # least parses on the minimum supported runtime (matches Requires PHP), even
+  # though the test tooling cannot run there.
+  php82-syntax:
+    name: PHP 8.2 syntax
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      - name: Set up PHP 8.0
+      - name: Set up PHP 8.2
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.2'
           coverage: none
       - name: php -l on every PHP file (excluding vendor)
         run: |
           find . -type f -name '*.php' -not -path './vendor/*' -print0 \
             | xargs -0 -n1 -P4 php -l > /dev/null
-          echo "All PHP files parse on PHP 8.0."
+          echo "All PHP files parse on PHP 8.2."
 
   # The official WordPress.org Plugin Check — the exact automated gate the
   # directory runs. Built into the release layout first (via `git archive`, so
