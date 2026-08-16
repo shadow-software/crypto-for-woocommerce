@@ -113,8 +113,6 @@ final class MoneyTest extends TestCase {
 	 * This is the regression guard for the decimals-unaware salt bug that mis-priced
 	 * USDC/USDT (6dp) and BTC (8dp) orders.
 	 *
-	 * @dataProvider salt_cases
-	 *
 	 * @param string $amount Quoted amount in the asset's base units.
 	 */
 	#[\PHPUnit\Framework\Attributes\DataProvider( 'salt_cases' )]
