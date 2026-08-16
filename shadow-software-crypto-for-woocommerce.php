@@ -5,7 +5,7 @@
  * Description:       A simple, free, open-source plugin to confirm common blockchain transactions (USDT/USDC/BTC/ETH) and mark orders paid in Woocommerce. Enter your own receiving addresses; customers pay them directly and the payment is confirmed on-chain with free public nodes and explorers before the order is marked paid. No middleman, no fees, no keys on your server.
  * Version:           1.0.2
  * Requires at least: 7.0
- * Requires PHP:      8.2
+ * Requires PHP:      8.5
  * Requires Plugins:  woocommerce
  * Author:            Shadow Software LLC
  * Author URI:        https://shadowsoftware.com/
