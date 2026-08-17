@@ -7,18 +7,12 @@ name: Update wp.org readme & assets
 #
 # It does NOT create or touch an SVN tag, so it is safe to run any time.
 #
-# Trigger: run by hand from the Actions tab (workflow_dispatch), or automatically
-# when readme.txt or the .wordpress-org/ assets change on the default branch.
+# Trigger: run by hand from the Actions tab (workflow_dispatch) only.
 #
 # Requires the same secrets as the deploy workflow:
 #   SVN_USERNAME, SVN_PASSWORD
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
-    paths:
-      - 'readme.txt'
-      - '.wordpress-org/**'
 
 permissions:
   contents: read
