@@ -1,35 +1,163 @@
-name: Deploy to WordPress.org
+name: Deploy
 
-# Publishes a tagged release to the WordPress.org plugin directory
-# (SVN: https://plugins.svn.wordpress.org/shadow-software-crypto-for-woocommerce):
-#   * the installable plugin -> SVN trunk + a matching SVN tag (respecting
-#     .distignore / .gitattributes export-ignore), and
-#   * the directory assets (icon, banner, screenshot-N.png) from .wordpress-org/
-#     -> SVN assets/ (the 10up action moves them there automatically).
-#
-# Trigger: push a version tag matching the plugin's Stable tag, e.g.
-#   git tag 1.0.0 && git push origin 1.0.0
-# The tag must equal readme.txt's "Stable tag" and the plugin "Version:" header.
-#
-# Requires two repository secrets (Settings → Secrets and variables → Actions):
-#   SVN_USERNAME  — your WordPress.org account username
-#   SVN_PASSWORD  — your WordPress.org account password
-# Until those are set, this workflow simply no-ops on tag pushes.
-#
-# It can also be run by hand from the Actions tab (workflow_dispatch) against a
-# ref that is already tagged, which is handy for a first publish.
+# GitHub Release, WordPress.org SVN publish, and readme/assets sync (no version bump).
+
 on:
   push:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
       - '[0-9]+.[0-9]+.[0-9]+-*'
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to (re)build a GitHub Release for'
+        required: false
+        type: string
+      sync_readme_assets:
+        description: 'Sync wp.org readme and .wordpress-org assets only (no version bump)'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
+concurrency:
+  group: deploy-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  release:
+    if: >-
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))
+      || (github.event_name == 'workflow_dispatch' && inputs.tag != '')
+    name: Build ZIP and publish GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+
+      - name: Resolve the version
+        id: version
+        run: |
+          # The tag drives everything. On a tag push it's github.ref_name; on a
+          # manual run it's the supplied input.
+          version="${{ github.event.inputs.tag || github.ref_name }}"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "Building release for version: ${version}"
+
+      - name: Verify the tag matches the plugin version everywhere
+        run: |
+          set -euo pipefail
+          tag="${{ steps.version.outputs.version }}"
+
+          header="$(grep -oE '^\s*\*\s*Version:\s*\S+' shadow-software-crypto-for-woocommerce.php | awk '{print $NF}')"
+          const="$(grep -oE "SHADOW_ETH_VERSION',\s*'[^']+'" shadow-software-crypto-for-woocommerce.php | grep -oE "'[0-9][^']*'" | tr -d "'")"
+          stable="$(grep -oE '^Stable tag:\s*\S+' readme.txt | awk '{print $NF}')"
+
+          echo "tag=${tag}  header=${header}  const=${const}  stable_tag=${stable}"
+
+          fail=0
+          [ "$header" = "$tag" ] || { echo "::error::Plugin header Version ($header) != tag ($tag)"; fail=1; }
+          [ "$const"  = "$tag" ] || { echo "::error::SHADOW_ETH_VERSION ($const) != tag ($tag)"; fail=1; }
+          [ "$stable" = "$tag" ] || { echo "::error::readme.txt Stable tag ($stable) != tag ($tag)"; fail=1; }
+
+          if [ "$fail" -ne 0 ]; then
+            echo "::error::Version mismatch. Bump every place to ${tag} before tagging."
+            exit 1
+          fi
+
+      - name: Build the lean installable ZIP
+        id: build
+        run: |
+          set -euo pipefail
+          slug="shadow-software-crypto-for-woocommerce"
+          version="${{ steps.version.outputs.version }}"
+          zip="${slug}.${version}.zip"
+
+          # git archive applies .gitattributes export-ignore, so the ZIP contains
+          # ONLY the runtime plugin — no tests, docs, CI, composer, or wp.org
+          # assets — nested under the slug directory, exactly as WordPress expects
+          # from an uploaded ZIP. This is byte-for-byte the layout deploy.yml ships
+          # to wp.org, built the same way, so the two releases can never diverge.
+          mkdir -p dist
+          git archive --format=zip --prefix="${slug}/" -o "dist/${zip}" "${{ steps.version.outputs.version }}"
+
+          echo "zip=dist/${zip}" >> "$GITHUB_OUTPUT"
+          echo "Built dist/${zip}"
+
+      - name: Verify the ZIP is lean and installable
+        run: |
+          set -euo pipefail
+          zip="${{ steps.build.outputs.zip }}"
+
+          echo "── ZIP contents ──"
+          unzip -l "$zip"
+
+          # It must contain the main plugin file at the top of the slug dir…
+          unzip -l "$zip" | grep -q 'shadow-software-crypto-for-woocommerce/shadow-software-crypto-for-woocommerce.php' \
+            || { echo "::error::Main plugin file missing from the ZIP"; exit 1; }
+
+          # …and must NOT contain any development or repo cruft.
+          if unzip -l "$zip" | grep -Eq 'tests/|docs/|\.github|composer\.(json|lock)|phpcs|phpstan|phpunit|\.distignore|\.gitattributes|\.wordpress-org|README\.md|CONTRIBUTING\.md|SECURITY\.md'; then
+            echo "::error::Development or repo files leaked into the installable ZIP"
+            exit 1
+          fi
+
+          echo "ZIP is lean and installable."
+
+      - name: Extract release notes from the changelog
+        id: notes
+        run: |
+          set -euo pipefail
+          version="${{ steps.version.outputs.version }}"
+
+          body="$(bash .github/extract-changelog.sh "$version" readme.txt || true)"
+          if [ -z "$body" ]; then
+            body="See the changelog in readme.txt."
+          fi
+
+          {
+            echo "## AGT Sync for WooCommerce ${version}"
+            echo
+            echo "$body"
+            echo
+            echo "---"
+            echo
+            echo "**Install:** download \`shadow-software-crypto-for-woocommerce.${version}.zip\` below, then in your WordPress admin go to **Plugins → Add New → Upload Plugin**, choose the ZIP, and click **Install Now**. Requires WooCommerce and an American Gun Trader dealer account."
+            echo
+            echo "**Also on WordPress.org:** https://wordpress.org/plugins/shadow-software-crypto-for-woocommerce/"
+            echo
+            echo "**Documentation & source:** https://github.com/shadow-software/agt-for-woocommerce#readme"
+            echo
+            echo "Developed & maintained by [Shadow Software LLC](https://shadowsoftware.com/)."
+          } > release-notes.md
+
+          echo "Wrote release notes:"
+          cat release-notes.md
+
+      - name: Publish the GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: ${{ steps.version.outputs.version }}
+          body_path: release-notes.md
+          files: ${{ steps.build.outputs.zip }}
+          draft: false
+          prerelease: ${{ contains(steps.version.outputs.version, '-') }}
+          fail_on_unmatched_files: true
+
+  wporg-deploy:
+    if: >-
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))
+      || (github.event_name == 'workflow_dispatch'
+          && inputs.tag == ''
+          && inputs.sync_readme_assets != true)
     name: Publish to WordPress.org
     runs-on: ubuntu-latest
     steps:
@@ -65,3 +193,30 @@ jobs:
         with:
           name: shadow-software-crypto-for-woocommerce-${{ github.ref_name }}
           path: ${{ steps.deploy.outputs.zip-path }}
+
+  wporg-assets:
+    if: github.event_name == 'workflow_dispatch' && inputs.sync_readme_assets == true
+    name: Sync readme + assets to WordPress.org
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Guard — require WordPress.org credentials
+        id: guard
+        run: |
+          if [ -z "${{ secrets.SVN_USERNAME }}" ] || [ -z "${{ secrets.SVN_PASSWORD }}" ]; then
+            echo "WordPress.org SVN credentials are not configured; skipping."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update readme + assets on WordPress.org
+        if: steps.guard.outputs.ready == 'true'
+        uses: 10up/action-wordpress-plugin-asset-update@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: shadow-software-crypto-for-woocommerce
+          ASSETS_DIR: .wordpress-org
